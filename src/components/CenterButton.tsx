@@ -1,0 +1,31 @@
+import React from 'react';
+
+import { type LatLngExpression } from 'leaflet';
+
+// interfaces
+interface IProps {
+  map: any;
+  zoomLevel: number;
+  centerCoords: LatLngExpression;
+}
+
+const CenterButton = ({ map, zoomLevel, centerCoords }: IProps) => {
+  const onClick = React.useCallback(() => {
+    map.setView(centerCoords, zoomLevel);
+  }, [map, zoomLevel, centerCoords]);
+
+  return (
+    <div className='center-button flex flex-v-center flex-h-center'>
+      <button
+        type='button'
+        onClick={onClick}
+        title='Center map'
+        className='flex flex-h-center flex-v-center pointer'
+      >
+        <span className='material-symbols-outlined'>center_focus_weak</span>
+      </button>
+    </div>
+  );
+};
+
+export default CenterButton;
