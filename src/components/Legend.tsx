@@ -22,9 +22,9 @@ const Legend = ({ map, logo, data, locations }: IProps): React.JSX.Element => {
   const [filteredResults, setFilteredResults] = React.useState<ILocation[] | null>(null);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    const searchKeyword = e.target.value?.trim();
+    const searchKeyword = e.target.value;
 
-    if (searchKeyword != null && searchKeyword.length > 0) {
+    if (searchKeyword != null && searchKeyword?.trim().length > 0) {
       setKeyword(searchKeyword);
 
       const results = locations?.filter((s) =>
@@ -64,6 +64,7 @@ const Legend = ({ map, logo, data, locations }: IProps): React.JSX.Element => {
             type='text'
             id='search'
             name='search'
+            maxLength={32}
             ref={inputRef}
             value={keyword}
             onChange={handleChange}
@@ -92,7 +93,7 @@ const Legend = ({ map, logo, data, locations }: IProps): React.JSX.Element => {
                       className='flex-space-between flex-gap flex-h-center pointer active-opacity'
                     >
                       <span className='material-symbols-outlined'>{item.category.icon}</span>
-                      <span className='flex flex-grow flex-self strong'>{item.title}</span>
+                      <span className='flex flex-grow flex-self'>{item.title}</span>
                       <span className='material-symbols-outlined'>center_focus_weak</span>
                       <em>Show</em>
                     </button>
