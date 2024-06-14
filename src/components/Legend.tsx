@@ -13,6 +13,7 @@ interface IProps {
 const Legend = ({ map }: IProps): React.JSX.Element => {
   const inputRef = React.useRef<HTMLInputElement>(null);
 
+  const [close, setClose] = React.useState<boolean>(false);
   const [keyword, setKeyword] = React.useState<string | null>(null);
   const [filteredResults, setFilteredResults] = React.useState<IData[] | null>(null);
 
@@ -29,6 +30,7 @@ const Legend = ({ map }: IProps): React.JSX.Element => {
       if (!results) {
         setFilteredResults(null);
       } else {
+        setClose(false);
         setFilteredResults(results);
       }
     } else {
@@ -37,7 +39,7 @@ const Legend = ({ map }: IProps): React.JSX.Element => {
     }
   };
 
-  const handleClose = (): void => {
+  const handleAutocompleterClose = (): void => {
     setFilteredResults(null);
 
     if (inputRef.current) {
@@ -73,7 +75,7 @@ const Legend = ({ map }: IProps): React.JSX.Element => {
             <span
               tabIndex={0}
               role='button'
-              onClick={() => handleClose()}
+              onClick={() => handleAutocompleterClose()}
               className='material-symbols-outlined input-icon pointer'
             >
               close
@@ -105,35 +107,41 @@ const Legend = ({ map }: IProps): React.JSX.Element => {
         )}
       </div>
 
-      <div className='flex flex-space-between'>
+      <div className='flex flex-space-between legend-header'>
         <h5>Legend</h5>
-        <span className='material-symbols-outlined down-icon'>keyboard_arrow_down</span>
+        <button type='button' onClick={() => setClose(!close)}>
+          <span className='material-symbols-outlined down-icon'>
+            {close ? 'expand_less' : 'expand_more'}
+          </span>
+        </button>
       </div>
 
-      <div className='flex flex-space-between'>
-        <div className='grid flex-gap'>
-          <div className='flex flex-v-center flex-gap'>
-            <span className='material-symbols-outlined'>local_parking</span>
-            <em>Car parking</em>
+      {!close && (
+        <div className='flex flex-space-between legend-content'>
+          <div className='grid flex-gap'>
+            <div className='flex flex-v-center flex-gap'>
+              <span className='material-symbols-outlined'>local_parking</span>
+              <em>Car parking</em>
+            </div>
+            <div className='flex flex-v-center flex-gap'>
+              <span className='material-symbols-outlined'>restaurant</span>
+              <em>Restaurant</em>
+            </div>
+            <div className='flex flex-v-center flex-gap'>
+              <span className='material-symbols-outlined'>follow_the_signs</span>
+              <em>Toilets</em>
+            </div>
+            <div className='flex flex-v-center flex-gap'>
+              <span className='material-symbols-outlined'>videocam</span>
+              <em>Media area</em>
+            </div>
           </div>
-          <div className='flex flex-v-center flex-gap'>
-            <span className='material-symbols-outlined'>restaurant</span>
-            <em>Restaurant</em>
-          </div>
-          <div className='flex flex-v-center flex-gap'>
-            <span className='material-symbols-outlined'>follow_the_signs</span>
-            <em>Toilets</em>
-          </div>
-          <div className='flex flex-v-center flex-gap'>
-            <span className='material-symbols-outlined'>videocam</span>
-            <em>Media area</em>
-          </div>
-        </div>
 
-        <div className='flex flex-v-end'>
-          <img src='images/fia-logo.png' width='150' alt='FIA logo' draggable='false' />
+          <div className='flex flex-v-end'>
+            <img src='images/fia-logo.png' width='150' alt='FIA logo' draggable='false' />
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 };

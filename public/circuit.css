@@ -133,6 +133,7 @@ p {
 .material-symbols-outlined {
   user-select: none;
   --webkit-user-select: none;
+  font-weight: normal !important;
 }
 
 .container {
@@ -335,6 +336,14 @@ strong,
   background-color: #ffffff;
   box-shadow: 0 4px 6px -4px rgba(0, 0, 0, 0.1),
     0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(17, 24, 39, 0.05);
+}
+
+.legend-header h5 {
+  margin-bottom: 0;
+}
+
+.legend-content {
+  margin-top: 10px;
 }
 
 .information {
