@@ -6,6 +6,9 @@ import { Popup, Polygon, Tooltip, TileLayer, MapContainer } from 'react-leaflet'
 // styles
 import 'leaflet/dist/leaflet.css';
 
+import './styles/circuit.css';
+import './styles/circuit-light.css';
+
 // components
 import Legend from './components/Legend';
 import Loading from './components/Loading';
@@ -63,7 +66,7 @@ const App = (): React.JSX.Element => {
   }
 
   return (
-    <>
+    <div>
       <Information name={mapData.name} logo={mapData.topLogo} />
 
       <CenterButton
@@ -80,7 +83,11 @@ const App = (): React.JSX.Element => {
         zoom={mapData.defaultZoom}
         center={mapData.centerCoords}
       >
+        {/* Dark Layer */}
+        {/* <TileLayer url='https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png' /> */}
+        {/* Light Layer */}
         <TileLayer url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png' />
+        {/* Satellite Layer */}
         {/* <TileLayer url='https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}' /> */}
         {mapData?.locations?.map((loc) => (
           <Polygon key={loc.id} pathOptions={{ color: loc.color }} positions={loc.shapeCoords}>
@@ -99,7 +106,7 @@ const App = (): React.JSX.Element => {
         logo={mapData.bottomLogo}
         locations={mapData.locations}
       />
-    </>
+    </div>
   );
 };
 

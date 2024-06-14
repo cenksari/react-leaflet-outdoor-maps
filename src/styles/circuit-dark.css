@@ -1,0 +1,111 @@
+::selection {
+  color: #111111;
+  background: #dadada;
+}
+
+html,
+body,
+header,
+footer,
+main,
+section,
+article,
+aside,
+nav,
+form,
+input,
+select,
+button,
+textarea,
+div,
+span,
+p,
+i,
+ul,
+ol,
+dl,
+dt,
+dd,
+li,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+em,
+strong,
+a,
+table,
+tr,
+th,
+td,
+img,
+svg,
+path,
+circle,
+polygon {
+  color: #c5d1de;
+}
+
+html,
+body {
+  background-color: #23272e;
+}
+
+.legend,
+.information {
+  background-color: #23272e;
+  box-shadow: 0 4px 6px -4px rgba(0, 0, 0, 0.1),
+    0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(17, 24, 39, 0.05);
+}
+
+.search-area {
+  border: 1px solid #444c56;
+  background-color: #1d2128;
+}
+
+.center-button {
+  background-color: #1d2128;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.65);
+}
+
+.center-button:hover,
+.center-button:active {
+  background-color: #000000;
+}
+
+.autocomplete {
+  border: 1px solid #444c56;
+  background-color: #1d2128;
+}
+
+.autocomplete ul li button span {
+  color: #c5d1de;
+}
+
+.autocomplete ul li button:hover {
+  background-color: #23272e;
+}
+
+.scroller-vertical::-webkit-scrollbar-thumb {
+  background-color: #999999;
+}
+
+.scroller-vertical::-webkit-scrollbar-thumb:window-inactive {
+  background-color: #999999;
+}
+
+.loading-svg {
+  stroke: #c5d1de;
+}
+
+.leaflet-bar a {
+  background-color: #1d2128;
+  border-bottom: 1px solid #444c56;
+}
+
+.leaflet-bar a:hover {
+  background-color: #000000;
+}

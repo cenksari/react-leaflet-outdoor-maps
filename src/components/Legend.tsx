@@ -78,7 +78,7 @@ const Legend = ({ map, logo, data, locations }: IProps): React.JSX.Element => {
               tabIndex={0}
               role='button'
               onClick={() => handleAutocompleterClose()}
-              className='material-symbols-outlined input-icon pointer'
+              className='material-symbols-outlined input-icon pointer active-opacity'
             >
               close
             </span>
@@ -93,8 +93,8 @@ const Legend = ({ map, logo, data, locations }: IProps): React.JSX.Element => {
                   <li key={item.id}>
                     <button
                       type='button'
-                      className='flex-space-between flex-gap flex-h-center pointer'
                       onClick={() => handleClick(item.shapeCoords[0])}
+                      className='flex-space-between flex-gap flex-h-center pointer active-opacity'
                     >
                       <span className='material-symbols-outlined'>{item.category.icon}</span>
                       <span className='flex flex-grow flex-self strong'>{item.title}</span>
@@ -114,7 +114,7 @@ const Legend = ({ map, logo, data, locations }: IProps): React.JSX.Element => {
       <div className='flex flex-space-between legend-header'>
         <h5>Legend</h5>
         <button type='button' onClick={() => setClose(!close)}>
-          <span className='material-symbols-outlined down-icon'>
+          <span className='material-symbols-outlined down-icon pointer active-opacity'>
             {close ? 'expand_less' : 'expand_more'}
           </span>
         </button>
