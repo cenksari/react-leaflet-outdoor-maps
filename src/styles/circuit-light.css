@@ -109,6 +109,13 @@ body {
   border-bottom: 1px solid #cccccc;
 }
 
-.leaflet-bar a:hover {
+.leaflet-bar a:hover,
+.leaflet-bar a.leaflet-disabled {
   background-color: #f5f5f5;
+}
+
+.leaflet-popup-tip,
+.leaflet-popup-content-wrapper {
+  background-color: #ffffff;
+  border: 1px solid #cccccc;
 }

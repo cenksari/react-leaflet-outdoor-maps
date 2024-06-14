@@ -3,11 +3,13 @@ import React from 'react';
 import { Map, LatLng, LatLngBounds } from 'leaflet';
 import { Popup, Polygon, Tooltip, TileLayer, MapContainer } from 'react-leaflet';
 
+// hooks
+import useTheme from './hooks/useTheme';
+
 // styles
 import 'leaflet/dist/leaflet.css';
 
 import './styles/circuit.css';
-import './styles/circuit-light.css';
 
 // components
 import Legend from './components/Legend';
@@ -21,6 +23,8 @@ import data, { type IData } from './data/data';
 import legend, { type ILegend } from './data/legend';
 
 const App = (): React.JSX.Element => {
+  const { theme, changeTheme } = useTheme();
+
   const [loading, setLoading] = React.useState<boolean>(true);
   const [mapData, setMapData] = React.useState<IData | null>(null);
   const [mapReference, setMapReference] = React.useState<Map | null>(null);
@@ -32,6 +36,12 @@ const App = (): React.JSX.Element => {
   };
 
   React.useEffect(() => {
+    if (theme === 'dark') {
+      import('./styles/circuit-dark.css');
+    } else {
+      import('./styles/circuit-light.css');
+    }
+
     const getData: IData = data;
 
     setMapData(data);
@@ -52,7 +62,15 @@ const App = (): React.JSX.Element => {
     }, 1500);
 
     return () => document.removeEventListener('contextmenu', preventClick);
-  }, []);
+  }, [theme]);
+
+  const changeAppTheme = () => {
+    setLoading(true);
+
+    changeTheme(theme === 'light' ? 'dark' : 'light');
+
+    document.location.reload();
+  };
 
   if (loading) {
     return <Loading />;
@@ -76,7 +94,7 @@ const App = (): React.JSX.Element => {
         centerCoords={mapData.centerCoords}
       />
 
-      <ThemeButton />
+      <ThemeButton theme={theme} onChangeTheme={changeAppTheme} />
 
       <MapContainer
         minZoom={15}
@@ -86,17 +104,21 @@ const App = (): React.JSX.Element => {
         zoom={mapData.defaultZoom}
         center={mapData.centerCoords}
       >
-        {/* Dark Layer */}
-        {/* <TileLayer url='https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png' /> */}
-        {/* Light Layer */}
-        <TileLayer url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png' />
+        {theme === 'dark' ? (
+          <TileLayer url='https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png' />
+        ) : (
+          <TileLayer url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png' />
+        )}
         {/* Satellite Layer */}
         {/* <TileLayer url='https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}' /> */}
         {mapData?.locations?.map((loc) => (
           <Polygon key={loc.id} pathOptions={{ color: loc.color }} positions={loc.shapeCoords}>
             <Tooltip>{loc.title}</Tooltip>
             <Popup>
-              <strong>{loc.title}</strong>
+              <div className='flex flex-gap-medium flex-v-center'>
+                <span className='material-symbols-outlined'>{loc.category.icon}</span>
+                <strong className='popup-title'>{loc.title}</strong>
+              </div>
               <p>{loc.description}</p>
             </Popup>
           </Polygon>

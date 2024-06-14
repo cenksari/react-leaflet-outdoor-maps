@@ -245,6 +245,16 @@ strong,
   height: 100vh;
 }
 
+.leaflet-container a.leaflet-popup-close-button {
+  top: 5px;
+  right: 13px;
+  font: 2em 'Open Sans', sans-serif;
+}
+
+.leaflet-popup-content {
+  font-size: 1.1em;
+}
+
 .legend {
   left: 10px;
   right: 10px;
@@ -322,6 +332,12 @@ strong,
   transition: all 1s ease;
 }
 
+.theme-button,
+.center-button {
+  background-color: #ffffff;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.65);
+}
+
 .theme-button span,
 .center-button span {
   font-size: 1.1em;
@@ -354,6 +370,10 @@ strong,
 
 .autocomplete em {
   font-size: 0.9em;
+}
+
+.popup-title {
+  font-size: 1.2em;
 }
 
 .scroller-vertical::-webkit-scrollbar {

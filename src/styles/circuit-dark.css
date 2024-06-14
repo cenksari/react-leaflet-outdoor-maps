@@ -1,6 +1,6 @@
 ::selection {
-  color: #111111;
-  background: #dadada;
+  color: #ffffff;
+  background: #000000;
 }
 
 html,
@@ -109,6 +109,13 @@ body {
   border-bottom: 1px solid #444c56;
 }
 
-.leaflet-bar a:hover {
+.leaflet-bar a:hover,
+.leaflet-bar a.leaflet-disabled {
   background-color: #000000;
+}
+
+.leaflet-popup-tip,
+.leaflet-popup-content-wrapper {
+  background-color: #1d2128;
+  border: 1px solid #444c56;
 }
