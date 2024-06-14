@@ -13,6 +13,7 @@ import './styles/circuit-light.css';
 import Legend from './components/Legend';
 import Loading from './components/Loading';
 import Information from './components/Information';
+import ThemeButton from './components/ThemeButton';
 import CenterButton from './components/CenterButton';
 
 // data
@@ -66,7 +67,7 @@ const App = (): React.JSX.Element => {
   }
 
   return (
-    <div>
+    <>
       <Information name={mapData.name} logo={mapData.topLogo} />
 
       <CenterButton
@@ -74,6 +75,8 @@ const App = (): React.JSX.Element => {
         zoomLevel={mapData.defaultZoom}
         centerCoords={mapData.centerCoords}
       />
+
+      <ThemeButton />
 
       <MapContainer
         minZoom={15}
@@ -106,7 +109,7 @@ const App = (): React.JSX.Element => {
         logo={mapData.bottomLogo}
         locations={mapData.locations}
       />
-    </div>
+    </>
   );
 };
 

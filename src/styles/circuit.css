@@ -309,9 +309,20 @@ strong,
   position: absolute;
   border-radius: 2px;
   transition: all 1s ease;
-  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.65);
 }
 
+.theme-button {
+  top: 120px;
+  left: 12px;
+  width: 29px;
+  height: 29px;
+  z-index: 999999;
+  position: absolute;
+  border-radius: 2px;
+  transition: all 1s ease;
+}
+
+.theme-button span,
 .center-button span {
   font-size: 1.1em;
 }
