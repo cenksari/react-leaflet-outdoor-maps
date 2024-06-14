@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { LatLng, LatLngBounds, LatLngExpression } from 'leaflet';
+import { LatLng, LatLngBounds, type LatLngExpression } from 'leaflet';
 import { Popup, Polygon, Tooltip, TileLayer, MapContainer } from 'react-leaflet';
 
 // styles
@@ -75,7 +75,7 @@ const App = (): React.JSX.Element => {
         ))}
       </MapContainer>
 
-      <Legend />
+      <Legend map={mapRef} />
     </>
   );
 };

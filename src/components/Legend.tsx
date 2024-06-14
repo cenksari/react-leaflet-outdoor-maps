@@ -1,26 +1,98 @@
 import React from 'react';
 
-const Legend = (): React.JSX.Element => {
+import { type LatLngExpression } from 'leaflet';
+
+// data
+import data, { type IData } from '../data/data';
+
+// interfaces
+interface IProps {
+  map: any;
+}
+
+const Legend = ({ map }: IProps): React.JSX.Element => {
   const inputRef = React.useRef<HTMLInputElement>(null);
+
+  const [filteredResults, setFilteredResults] = React.useState<IData[] | null>(null);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
+    const searchKeyword = e.target.value?.trim();
+
+    if (searchKeyword != null && searchKeyword.length > 0) {
+      const results = data.filter((s) =>
+        s.title.toLocaleLowerCase('tr-TR').includes(searchKeyword.toLocaleLowerCase('tr-TR'))
+      );
+
+      if (!results) {
+        setFilteredResults(null);
+      } else {
+        setFilteredResults(results);
+      }
+    } else {
+      setFilteredResults(null);
+    }
+  };
+
+  const handleClose = (): void => {
+    setFilteredResults(null);
+
+    if (inputRef.current) {
+      inputRef.current.value = '';
+    }
+  };
+
+  const handleClick = (coords: LatLngExpression): void => {
+    map.setView(coords, 20);
+  };
 
   return (
     <div className='legend'>
-      <div className='flex flex-gap-small flex-v-center search-area'>
-        <span
-          tabIndex={0}
-          role='button'
-          className='material-symbols-outlined'
-          onClick={() => inputRef.current?.focus()}
-        >
-          search
-        </span>
-        <input
-          type='text'
-          id='search'
-          name='search'
-          ref={inputRef}
-          placeholder='Search places...'
-        />
+      <div className='autocomplete-container'>
+        <div className='flex flex-gap-small flex-v-center search-area'>
+          <span
+            tabIndex={0}
+            role='button'
+            onClick={() => inputRef.current?.focus()}
+            className='material-symbols-outlined input-icon'
+          >
+            search
+          </span>
+          <input
+            type='text'
+            id='search'
+            name='search'
+            ref={inputRef}
+            onChange={handleChange}
+            placeholder='Search places...'
+          />
+          <span
+            tabIndex={0}
+            role='button'
+            onClick={() => handleClose()}
+            className='material-symbols-outlined input-icon pointer'
+          >
+            close
+          </span>
+        </div>
+
+        {filteredResults && (
+          <div className='autocomplete scroller-vertical'>
+            <ul>
+              {filteredResults.map((item) => (
+                <li key={item.id}>
+                  <button
+                    type='button'
+                    className='pointer'
+                    onClick={() => handleClick(item.shapeCoords[0])}
+                  >
+                    <span className='strong'>{item.title}</span>
+                    <span className='material-symbols-outlined'>center_focus_weak</span>
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
       </div>
 
       <div className='flex flex-space-between'>
