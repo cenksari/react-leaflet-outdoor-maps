@@ -16,6 +16,7 @@ module.exports = {
     'prettier/prettier': 'error',
     'react/react-in-jsx-scope': 'off',
     'react/require-default-props': 'off',
+    'react-hooks/exhaustive-deps': 'warn',
     'react/function-component-definition': 'off',
     'jsx-a11y/label-has-associated-control': 'off',
   },

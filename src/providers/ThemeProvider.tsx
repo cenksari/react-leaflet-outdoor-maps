@@ -14,6 +14,7 @@ const ThemeProvider = ({ children }: IProps): React.JSX.Element => {
   const [theme, setTheme] = React.useState<string>(initialState.theme);
 
   React.useEffect(() => {
+    // eslint-disable-next-line
     const getTheme: any = getData('theme');
 
     if (getTheme) {
@@ -29,7 +30,7 @@ const ThemeProvider = ({ children }: IProps): React.JSX.Element => {
     });
   };
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+  // eslint-disable-next-line
   const providerValue = React.useMemo(() => ({ theme, changeTheme }), [theme]);
 
   return <ThemeContext.Provider value={providerValue}>{children}</ThemeContext.Provider>;
