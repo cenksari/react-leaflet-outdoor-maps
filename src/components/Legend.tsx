@@ -48,7 +48,7 @@ const Legend = ({ map }: IProps): React.JSX.Element => {
   };
 
   const handleClick = (coords: LatLngExpression): void => {
-    map?.setView(coords, 20);
+    map?.setView(coords, 18);
   };
 
   return (
