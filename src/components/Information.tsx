@@ -1,8 +1,13 @@
 import React from 'react';
 
-const Information = (): React.JSX.Element => (
+interface IProps {
+  name: string;
+  logo: string | null;
+}
+
+const Information = ({ name, logo }: IProps): React.JSX.Element => (
   <div className='information'>
-    <img src='images/fuji-logo.png' width='150' alt='6 Hours of Fuji' draggable='false' />
+    {logo ? <img src={logo} width='150' alt={name} draggable='false' /> : <strong>{name}</strong>}
   </div>
 );
 

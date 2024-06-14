@@ -3,19 +3,23 @@ import React from 'react';
 import { Map, type LatLngExpression } from 'leaflet';
 
 // data
-import data, { type IData } from '../data/data';
+import { type ILegend } from '../data/legend';
+import { type ILocation } from '../data/data';
 
 // interfaces
 interface IProps {
   map: Map | null;
+  logo: string | null;
+  data: ILegend[] | null;
+  locations: ILocation[] | null;
 }
 
-const Legend = ({ map }: IProps): React.JSX.Element => {
+const Legend = ({ map, logo, data, locations }: IProps): React.JSX.Element => {
   const inputRef = React.useRef<HTMLInputElement>(null);
 
   const [close, setClose] = React.useState<boolean>(false);
   const [keyword, setKeyword] = React.useState<string | null>(null);
-  const [filteredResults, setFilteredResults] = React.useState<IData[] | null>(null);
+  const [filteredResults, setFilteredResults] = React.useState<ILocation[] | null>(null);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     const searchKeyword = e.target.value?.trim();
@@ -23,7 +27,7 @@ const Legend = ({ map }: IProps): React.JSX.Element => {
     if (searchKeyword != null && searchKeyword.length > 0) {
       setKeyword(searchKeyword);
 
-      const results = data.filter((s) =>
+      const results = locations?.filter((s) =>
         s.title.toLocaleLowerCase('tr-TR').includes(searchKeyword.toLocaleLowerCase('tr-TR'))
       );
 
@@ -91,11 +95,13 @@ const Legend = ({ map }: IProps): React.JSX.Element => {
                   <li key={item.id}>
                     <button
                       type='button'
-                      className='pointer'
+                      className='flex-space-between flex-gap flex-h-center pointer'
                       onClick={() => handleClick(item.shapeCoords[0])}
                     >
-                      <span className='strong'>{item.title}</span>
+                      <span className='material-symbols-outlined'>{item.category.icon}</span>
+                      <span className='flex flex-grow flex-self strong'>{item.title}</span>
                       <span className='material-symbols-outlined'>center_focus_weak</span>
+                      <em>Show</em>
                     </button>
                   </li>
                 ))}
@@ -119,27 +125,19 @@ const Legend = ({ map }: IProps): React.JSX.Element => {
       {!close && (
         <div className='flex flex-space-between legend-content'>
           <div className='grid flex-gap'>
-            <div className='flex flex-v-center flex-gap'>
-              <span className='material-symbols-outlined'>local_parking</span>
-              <em>Car parking</em>
-            </div>
-            <div className='flex flex-v-center flex-gap'>
-              <span className='material-symbols-outlined'>restaurant</span>
-              <em>Restaurant</em>
-            </div>
-            <div className='flex flex-v-center flex-gap'>
-              <span className='material-symbols-outlined'>follow_the_signs</span>
-              <em>Toilets</em>
-            </div>
-            <div className='flex flex-v-center flex-gap'>
-              <span className='material-symbols-outlined'>videocam</span>
-              <em>Media area</em>
-            </div>
+            {data?.map((item) => (
+              <div key={item.id} className='flex flex-v-center flex-gap'>
+                <span className='material-symbols-outlined'>{item.icon}</span>
+                <em>{item.name}</em>
+              </div>
+            ))}
           </div>
 
-          <div className='flex flex-v-end'>
-            <img src='images/fia-logo.png' width='150' alt='FIA logo' draggable='false' />
-          </div>
+          {logo && (
+            <div className='flex flex-v-end'>
+              <img src={logo} width='150' alt='FIA logo' draggable='false' />
+            </div>
+          )}
         </div>
       )}
     </div>

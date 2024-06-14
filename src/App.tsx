@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Map, LatLng, LatLngBounds, type LatLngExpression } from 'leaflet';
+import { Map, LatLng, LatLngBounds } from 'leaflet';
 import { Popup, Polygon, Tooltip, TileLayer, MapContainer } from 'react-leaflet';
 
 // styles
@@ -13,28 +13,34 @@ import Information from './components/Information';
 import CenterButton from './components/CenterButton';
 
 // data
-import data from './data/data';
+import data, { type IData } from './data/data';
+import legend, { type ILegend } from './data/legend';
 
 const App = (): React.JSX.Element => {
-  const maxBounds = React.useMemo(
-    () =>
-      new LatLngBounds(
-        new LatLng(35.35111503766667, 138.91031946772557),
-        new LatLng(35.3899236884726, 138.9528485729159)
-      ),
-    []
-  );
-
-  const [defaultZoomLevel] = React.useState<number>(16);
   const [loading, setLoading] = React.useState<boolean>(true);
-  const [mapRef, setMapRef] = React.useState<Map | null>(null);
-  const [centerCoords] = React.useState<LatLngExpression>([35.370002237772944, 138.92797321568233]);
+  const [mapData, setMapData] = React.useState<IData | null>(null);
+  const [mapReference, setMapReference] = React.useState<Map | null>(null);
+  const [legendData, setLegendData] = React.useState<ILegend[] | null>(null);
+  const [maxMapBounds, setMaxMapBounds] = React.useState<LatLngBounds | null>(null);
 
   const preventClick = (e: MouseEvent) => {
     e.preventDefault();
   };
 
   React.useEffect(() => {
+    const getData: IData = data;
+
+    setMapData(data);
+
+    setLegendData(legend);
+
+    setMaxMapBounds(
+      new LatLngBounds(
+        new LatLng(getData.maxBounds.southWest[0], getData.maxBounds.southWest[1]),
+        new LatLng(getData.maxBounds.northEast[0], getData.maxBounds.northEast[1])
+      )
+    );
+
     document.addEventListener('contextmenu', preventClick);
 
     setTimeout(() => {
@@ -48,23 +54,35 @@ const App = (): React.JSX.Element => {
     return <Loading />;
   }
 
+  if (!mapData) {
+    return (
+      <div>
+        <p className='flex flex-h-center flex-v-center full-h'>No map data found!</p>
+      </div>
+    );
+  }
+
   return (
     <>
-      <Information />
+      <Information name={mapData.name} logo={mapData.topLogo} />
 
-      <CenterButton map={mapRef} zoomLevel={defaultZoomLevel} centerCoords={centerCoords} />
+      <CenterButton
+        map={mapReference}
+        zoomLevel={mapData.defaultZoom}
+        centerCoords={mapData.centerCoords}
+      />
 
       <MapContainer
         minZoom={15}
-        ref={setMapRef}
         scrollWheelZoom
-        center={centerCoords}
-        maxBounds={maxBounds}
-        zoom={defaultZoomLevel}
+        ref={setMapReference}
+        maxBounds={maxMapBounds!}
+        zoom={mapData.defaultZoom}
+        center={mapData.centerCoords}
       >
         <TileLayer url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png' />
         {/* <TileLayer url='https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}' /> */}
-        {data.map((loc) => (
+        {mapData?.locations?.map((loc) => (
           <Polygon key={loc.id} pathOptions={{ color: loc.color }} positions={loc.shapeCoords}>
             <Tooltip>{loc.title}</Tooltip>
             <Popup>
@@ -75,7 +93,12 @@ const App = (): React.JSX.Element => {
         ))}
       </MapContainer>
 
-      <Legend map={mapRef} />
+      <Legend
+        data={legendData}
+        map={mapReference}
+        logo={mapData.bottomLogo}
+        locations={mapData.locations}
+      />
     </>
   );
 };
