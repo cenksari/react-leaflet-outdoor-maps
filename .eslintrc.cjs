@@ -17,8 +17,6 @@ module.exports = {
     'react/react-in-jsx-scope': 'off',
     'react/require-default-props': 'off',
     'react/function-component-definition': 'off',
-    'jsx-a11y/control-has-associated-label': 'off',
     'jsx-a11y/label-has-associated-control': 'off',
-    'jsx-a11y/click-events-have-key-events': 'off',
   },
 };

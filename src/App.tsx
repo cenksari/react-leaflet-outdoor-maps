@@ -104,11 +104,7 @@ const App = (): React.JSX.Element => {
         zoom={mapData.defaultZoom}
         center={mapData.centerCoords}
       >
-        {theme === 'dark' ? (
-          <TileLayer url='https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png' />
-        ) : (
-          <TileLayer url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png' />
-        )}
+        <TileLayer url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png' />
         {/* Satellite Layer */}
         {/* <TileLayer url='https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}' /> */}
         {mapData?.locations?.map((loc) => (

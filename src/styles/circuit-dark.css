@@ -119,3 +119,10 @@ body {
   background-color: #1d2128;
   border: 1px solid #444c56;
 }
+
+.leaflet-layer,
+.leaflet-control-zoom-in,
+.leaflet-control-zoom-out,
+.leaflet-control-attribution {
+  filter: invert(100%) hue-rotate(180deg) brightness(50%) contrast(90%);
+}
