@@ -18,7 +18,7 @@ const Legend = ({ map, logo, data, locations }: IProps): React.JSX.Element => {
   const inputRef = React.useRef<HTMLInputElement>(null);
 
   const [close, setClose] = React.useState<boolean>(false);
-  const [keyword, setKeyword] = React.useState<string | null>(null);
+  const [keyword, setKeyword] = React.useState<string>('');
   const [filteredResults, setFilteredResults] = React.useState<ILocation[] | null>(null);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
@@ -38,15 +38,15 @@ const Legend = ({ map, logo, data, locations }: IProps): React.JSX.Element => {
         setFilteredResults(results);
       }
     } else {
-      setKeyword(null);
+      setKeyword('');
       setFilteredResults(null);
     }
   };
 
   const handleAutocompleterClose = (): void => {
-    setFilteredResults(null);
+    setKeyword('');
 
-    setKeyword(null);
+    setFilteredResults(null);
   };
 
   const handleClick = (coords: LatLngExpression): void => {
@@ -57,31 +57,26 @@ const Legend = ({ map, logo, data, locations }: IProps): React.JSX.Element => {
     <div className='legend'>
       <div className='autocomplete-container'>
         <div className='flex flex-gap-small flex-v-center search-area'>
-          <span
-            tabIndex={0}
-            role='button'
-            onClick={() => inputRef.current?.focus()}
-            className='material-symbols-outlined input-icon'
-          >
-            search
-          </span>
+          <button type='button' onClick={() => inputRef.current?.focus()}>
+            <span className='material-symbols-outlined input-icon'>search</span>
+          </button>
           <input
             type='text'
             id='search'
             name='search'
             ref={inputRef}
+            value={keyword}
             onChange={handleChange}
             placeholder='Search places...'
           />
           {keyword && (
-            <span
-              tabIndex={0}
-              role='button'
+            <button
+              type='button'
+              className='pointer active-opacity'
               onClick={() => handleAutocompleterClose()}
-              className='material-symbols-outlined input-icon pointer active-opacity'
             >
-              close
-            </span>
+              <span className='material-symbols-outlined input-icon'>close</span>
+            </button>
           )}
         </div>
 
