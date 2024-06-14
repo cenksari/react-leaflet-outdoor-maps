@@ -14,9 +14,7 @@ module.exports = {
   plugins: ['@typescript-eslint', 'prettier'],
   rules: {
     'prettier/prettier': 'error',
-    'react/react-in-jsx-scope': 'off',
     'react/require-default-props': 'off',
     'react/function-component-definition': 'off',
-    'jsx-a11y/label-has-associated-control': 'off',
   },
 };

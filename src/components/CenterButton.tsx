@@ -10,7 +10,7 @@ interface IProps {
 }
 
 const CenterButton = ({ map, zoomLevel, centerCoords }: IProps): React.JSX.Element => {
-  const onClick = React.useCallback(() => {
+  const onClick = React.useCallback((): void => {
     map?.setView(centerCoords, zoomLevel);
   }, [map, zoomLevel, centerCoords]);
 

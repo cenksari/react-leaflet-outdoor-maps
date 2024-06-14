@@ -9,9 +9,9 @@ import { type ILocation } from '../data/data';
 // interfaces
 interface IProps {
   map: Map | null;
-  logo: string | null;
+  logo?: string;
   data: ILegend[] | null;
-  locations: ILocation[] | null;
+  locations?: ILocation[];
 }
 
 const Legend = ({ map, logo, data, locations }: IProps): React.JSX.Element => {
@@ -45,7 +45,6 @@ const Legend = ({ map, logo, data, locations }: IProps): React.JSX.Element => {
 
   const handleAutocompleterClose = (): void => {
     setKeyword('');
-
     setFilteredResults(null);
   };
 

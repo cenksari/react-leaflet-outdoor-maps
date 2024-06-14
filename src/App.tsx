@@ -8,12 +8,12 @@ import useTheme from './hooks/useTheme';
 
 // styles
 import 'leaflet/dist/leaflet.css';
-
-import './styles/circuit.css';
+import './styles/circuit-core.css';
 
 // components
 import Legend from './components/Legend';
 import Loading from './components/Loading';
+import ErrorPage from './components/ErrorPage';
 import Information from './components/Information';
 import ThemeButton from './components/ThemeButton';
 import CenterButton from './components/CenterButton';
@@ -27,11 +27,11 @@ const App = (): React.JSX.Element => {
 
   const [loading, setLoading] = React.useState<boolean>(true);
   const [mapData, setMapData] = React.useState<IData | null>(null);
-  const [mapReference, setMapReference] = React.useState<Map | null>(null);
+  const [mapRefer, setMapRefer] = React.useState<Map | null>(null);
   const [legendData, setLegendData] = React.useState<ILegend[] | null>(null);
-  const [maxMapBounds, setMaxMapBounds] = React.useState<LatLngBounds | null>(null);
+  const [maxMapBounds, setMaxMapBounds] = React.useState<LatLngBounds | undefined>();
 
-  const preventClick = (e: MouseEvent) => {
+  const preventClick = (e: MouseEvent): void => {
     e.preventDefault();
   };
 
@@ -42,11 +42,12 @@ const App = (): React.JSX.Element => {
       import('./styles/circuit-light.css');
     }
 
-    const getData: IData = data;
+    const getData = data;
+    const getLegend = legend;
 
-    setMapData(data);
+    setMapData(getData);
 
-    setLegendData(legend);
+    setLegendData(getLegend);
 
     setMaxMapBounds(
       new LatLngBounds(
@@ -59,12 +60,12 @@ const App = (): React.JSX.Element => {
 
     setTimeout(() => {
       setLoading(false);
-    }, 1500);
+    }, 1000);
 
     return () => document.removeEventListener('contextmenu', preventClick);
   }, [theme]);
 
-  const changeAppTheme = () => {
+  const changeAppTheme = (): void => {
     setLoading(true);
 
     changeTheme(theme === 'light' ? 'dark' : 'light');
@@ -77,11 +78,7 @@ const App = (): React.JSX.Element => {
   }
 
   if (!mapData) {
-    return (
-      <div>
-        <p className='flex flex-h-center flex-v-center full-h'>No map data found!</p>
-      </div>
-    );
+    return <ErrorPage message='No map data found!' />;
   }
 
   return (
@@ -89,7 +86,7 @@ const App = (): React.JSX.Element => {
       <Information name={mapData.name} logo={mapData.topLogo} />
 
       <CenterButton
-        map={mapReference}
+        map={mapRefer}
         zoomLevel={mapData.defaultZoom}
         centerCoords={mapData.centerCoords}
       />
@@ -99,8 +96,8 @@ const App = (): React.JSX.Element => {
       <MapContainer
         minZoom={15}
         scrollWheelZoom
-        ref={setMapReference}
-        maxBounds={maxMapBounds!}
+        ref={setMapRefer}
+        maxBounds={maxMapBounds}
         zoom={mapData.defaultZoom}
         center={mapData.centerCoords}
       >
@@ -122,8 +119,8 @@ const App = (): React.JSX.Element => {
       </MapContainer>
 
       <Legend
+        map={mapRefer}
         data={legendData}
-        map={mapReference}
         logo={mapData.bottomLogo}
         locations={mapData.locations}
       />

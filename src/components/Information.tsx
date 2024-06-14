@@ -1,8 +1,9 @@
 import React from 'react';
 
+// interfaces
 interface IProps {
   name: string;
-  logo: string | null;
+  logo?: string;
 }
 
 const Information = ({ name, logo }: IProps): React.JSX.Element => (
