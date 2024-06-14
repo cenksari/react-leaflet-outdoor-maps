@@ -1,24 +1,27 @@
 import React from 'react';
 
-import { type LatLngExpression } from 'leaflet';
+import { Map, type LatLngExpression } from 'leaflet';
 
 // data
 import data, { type IData } from '../data/data';
 
 // interfaces
 interface IProps {
-  map: any;
+  map: Map | null;
 }
 
 const Legend = ({ map }: IProps): React.JSX.Element => {
   const inputRef = React.useRef<HTMLInputElement>(null);
 
+  const [keyword, setKeyword] = React.useState<string | null>(null);
   const [filteredResults, setFilteredResults] = React.useState<IData[] | null>(null);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     const searchKeyword = e.target.value?.trim();
 
     if (searchKeyword != null && searchKeyword.length > 0) {
+      setKeyword(searchKeyword);
+
       const results = data.filter((s) =>
         s.title.toLocaleLowerCase('tr-TR').includes(searchKeyword.toLocaleLowerCase('tr-TR'))
       );
@@ -29,6 +32,7 @@ const Legend = ({ map }: IProps): React.JSX.Element => {
         setFilteredResults(results);
       }
     } else {
+      setKeyword(null);
       setFilteredResults(null);
     }
   };
@@ -42,7 +46,7 @@ const Legend = ({ map }: IProps): React.JSX.Element => {
   };
 
   const handleClick = (coords: LatLngExpression): void => {
-    map.setView(coords, 20);
+    map?.setView(coords, 20);
   };
 
   return (
@@ -65,32 +69,38 @@ const Legend = ({ map }: IProps): React.JSX.Element => {
             onChange={handleChange}
             placeholder='Search places...'
           />
-          <span
-            tabIndex={0}
-            role='button'
-            onClick={() => handleClose()}
-            className='material-symbols-outlined input-icon pointer'
-          >
-            close
-          </span>
+          {keyword && (
+            <span
+              tabIndex={0}
+              role='button'
+              onClick={() => handleClose()}
+              className='material-symbols-outlined input-icon pointer'
+            >
+              close
+            </span>
+          )}
         </div>
 
         {filteredResults && (
           <div className='autocomplete scroller-vertical'>
-            <ul>
-              {filteredResults.map((item) => (
-                <li key={item.id}>
-                  <button
-                    type='button'
-                    className='pointer'
-                    onClick={() => handleClick(item.shapeCoords[0])}
-                  >
-                    <span className='strong'>{item.title}</span>
-                    <span className='material-symbols-outlined'>center_focus_weak</span>
-                  </button>
-                </li>
-              ))}
-            </ul>
+            {filteredResults.length > 0 ? (
+              <ul>
+                {filteredResults.map((item) => (
+                  <li key={item.id}>
+                    <button
+                      type='button'
+                      className='pointer'
+                      onClick={() => handleClick(item.shapeCoords[0])}
+                    >
+                      <span className='strong'>{item.title}</span>
+                      <span className='material-symbols-outlined'>center_focus_weak</span>
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <p>No results found!</p>
+            )}
           </div>
         )}
       </div>

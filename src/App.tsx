@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { LatLng, LatLngBounds, type LatLngExpression } from 'leaflet';
+import { Map, LatLng, LatLngBounds, type LatLngExpression } from 'leaflet';
 import { Popup, Polygon, Tooltip, TileLayer, MapContainer } from 'react-leaflet';
 
 // styles
@@ -26,11 +26,11 @@ const App = (): React.JSX.Element => {
   );
 
   const [defaultZoomLevel] = React.useState<number>(16);
-  const [mapRef, setMapRef] = React.useState<any>(null);
   const [loading, setLoading] = React.useState<boolean>(true);
+  const [mapRef, setMapRef] = React.useState<Map | null>(null);
   const [centerCoords] = React.useState<LatLngExpression>([35.370002237772944, 138.92797321568233]);
 
-  const preventClick = (e: any) => {
+  const preventClick = (e: MouseEvent) => {
     e.preventDefault();
   };
 
