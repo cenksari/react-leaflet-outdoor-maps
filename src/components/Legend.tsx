@@ -46,9 +46,7 @@ const Legend = ({ map, logo, data, locations }: IProps): React.JSX.Element => {
   const handleAutocompleterClose = (): void => {
     setFilteredResults(null);
 
-    if (inputRef.current) {
-      inputRef.current.value = '';
-    }
+    setKeyword(null);
   };
 
   const handleClick = (coords: LatLngExpression): void => {
