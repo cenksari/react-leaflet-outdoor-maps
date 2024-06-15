@@ -262,8 +262,8 @@ strong,
   padding: 20px;
   margin: 0 auto;
   z-index: 999999;
+  position: fixed;
   max-width: 1500px;
-  position: absolute;
   border-radius: 10px;
 }
 
@@ -289,7 +289,7 @@ strong,
 }
 
 .down-icon {
-  font-size: 2em;
+  font-size: 1.8em;
 }
 
 .loading-svg {
@@ -297,8 +297,8 @@ strong,
 }
 
 .search-area {
-  margin-bottom: 20px;
   border-radius: 10px;
+  margin: 15px 0 20px 0;
 }
 
 .search-area input {
@@ -351,8 +351,8 @@ strong,
   width: 100%;
   padding: 10px;
   overflow: auto;
-  min-height: 225px;
-  max-height: 225px;
+  min-height: 220px;
+  max-height: 220px;
   margin-top: -15px;
   position: absolute;
   border-radius: 10px;
@@ -396,7 +396,75 @@ strong,
 }
 
 @media (max-width: 500px) {
+  html,
+  body,
+  header,
+  footer,
+  main,
+  section,
+  article,
+  aside,
+  nav,
+  form,
+  input,
+  select,
+  button,
+  textarea,
+  div,
+  span,
+  p,
+  i,
+  ul,
+  ol,
+  dl,
+  dt,
+  dd,
+  li,
+  p,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  em,
+  strong,
+  a,
+  table,
+  tr,
+  th,
+  td,
+  img,
+  svg,
+  path,
+  circle,
+  polygon {
+    font-size: 1em;
+  }
+
+  .autocomplete {
+    min-height: 195px;
+    max-height: 195px;
+  }
+
   .autocomplete em {
     display: none;
+  }
+
+  .legend {
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: 0;
+    border-radius: 0;
+    padding: 10px 15px;
+  }
+
+  .information {
+    min-width: 160px;
+  }
+
+  .information img {
+    width: 100px;
   }
 }
