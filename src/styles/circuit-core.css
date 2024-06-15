@@ -442,6 +442,12 @@ strong,
     font-size: 1em;
   }
 
+  html,
+  body,
+  #root {
+    overflow: hidden;
+  }
+
   .autocomplete {
     min-height: 195px;
     max-height: 195px;
