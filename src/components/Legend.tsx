@@ -100,7 +100,7 @@ const Legend = ({ map, logo, data, locations }: IProps): React.JSX.Element => {
                         <button
                           type='button'
                           onClick={() => handleClick(item.shapeCoords[0])}
-                          className='flex-space-between flex-gap flex-h-center pointer active-opacity'
+                          className='flex-space-between flex-gap flex-h-center no-select pointer active-opacity'
                         >
                           <span className='material-symbols-outlined'>{item.category.icon}</span>
                           <span className='flex flex-grow flex-self'>{item.title}</span>
@@ -120,7 +120,7 @@ const Legend = ({ map, logo, data, locations }: IProps): React.JSX.Element => {
           <div className='flex flex-space-between legend-content'>
             <div className='grid flex-gap'>
               {data?.map((item) => (
-                <div key={item.id} className='flex flex-v-center flex-gap'>
+                <div key={item.id} className='flex flex-v-center flex-gap no-select'>
                   <span className='material-symbols-outlined'>{item.icon}</span>
                   <em>{item.name}</em>
                 </div>

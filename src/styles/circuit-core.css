@@ -248,11 +248,20 @@ strong,
 .leaflet-container a.leaflet-popup-close-button {
   top: 5px;
   right: 13px;
+  user-select: none;
+  --webkit-user-select: none;
   font: 2em 'Open Sans', sans-serif;
 }
 
 .leaflet-popup-content {
   font-size: 1.1em;
+  user-select: none;
+  --webkit-user-select: none;
+}
+
+.leaflet-control-container {
+  user-select: none;
+  --webkit-user-select: none;
 }
 
 .legend {
@@ -304,6 +313,11 @@ strong,
 .search-area input {
   width: 100%;
   padding: 10px 0;
+}
+
+.search-area input::placeholder {
+  user-select: none;
+  --webkit-user-select: none;
 }
 
 .search-area span {
