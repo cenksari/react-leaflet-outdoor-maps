@@ -470,7 +470,8 @@ strong,
     min-width: 160px;
   }
 
-  .information img {
-    width: 100px;
+  .information img,
+  .legend-content img {
+    width: 110px;
   }
 }
