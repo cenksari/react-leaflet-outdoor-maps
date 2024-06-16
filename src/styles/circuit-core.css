@@ -276,6 +276,14 @@ strong,
   border-radius: 10px;
 }
 
+.swiper {
+  width: 40px;
+  height: 5px;
+  display: none;
+  margin: 0 auto;
+  border-radius: 15px;
+}
+
 .legend-header h5 {
   margin-bottom: 0;
 }
@@ -471,13 +479,18 @@ strong,
     display: none;
   }
 
+  .swiper {
+    display: block;
+  }
+
   .legend {
     left: 0;
     right: 0;
     bottom: 0;
     margin: 0;
-    border-radius: 0;
     padding: 10px 15px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
   }
 
   .information {
@@ -487,5 +500,13 @@ strong,
   .information img,
   .legend-content img {
     width: 110px;
+  }
+
+  .legend-header {
+    margin-bottom: 5px;
+  }
+
+  .legend-header button {
+    display: none;
   }
 }

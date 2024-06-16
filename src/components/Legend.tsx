@@ -1,5 +1,7 @@
 import React from 'react';
 
+import Swipe from 'react-easy-swipe';
+
 import { Map, type LatLngExpression } from 'leaflet';
 
 // data
@@ -54,14 +56,17 @@ const Legend = ({ map, logo, data, locations }: IProps): React.JSX.Element => {
 
   return (
     <div className='legend'>
-      <div className='flex flex-space-between flex-v-center legend-header'>
-        <h5>Legend & Search</h5>
-        <button type='button' onClick={() => setClose(!close)}>
-          <span className='material-symbols-outlined down-icon pointer active-opacity'>
-            {close ? 'expand_less' : 'expand_more'}
-          </span>
-        </button>
-      </div>
+      <Swipe onSwipeUp={() => setClose(false)} onSwipeDown={() => setClose(true)}>
+        <div className='swiper' />
+        <div className='flex flex-space-between flex-v-center legend-header'>
+          <h5>Legend & Search</h5>
+          <button type='button' onClick={() => setClose(!close)}>
+            <span className='material-symbols-outlined down-icon pointer active-opacity'>
+              {close ? 'expand_less' : 'expand_more'}
+            </span>
+          </button>
+        </div>
+      </Swipe>
 
       {!close && (
         <>

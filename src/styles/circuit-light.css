@@ -54,6 +54,10 @@ body {
   background-color: #f5f5f5;
 }
 
+.swiper {
+  background-color: #dadada;
+}
+
 .legend,
 .information {
   background-color: #ffffff;
