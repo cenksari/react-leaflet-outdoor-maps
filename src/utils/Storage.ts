@@ -3,7 +3,7 @@
  *
  * @param {string} key - Storage key
  */
-const getData = (key: string): object | [] | null => {
+const getData = <T>(key: string): T | null => {
   try {
     const item = localStorage.getItem(key);
 
@@ -17,9 +17,9 @@ const getData = (key: string): object | [] | null => {
  * Set data to local storage.
  *
  * @param {string} key - Storage key
- * @param {object} value - Storage value
+ * @param {T} value - Storage value
  */
-const setData = (key: string, value: object): boolean => {
+const setData = <T>(key: string, value: T): boolean => {
   try {
     if (value) {
       localStorage.setItem(key, JSON.stringify(value));

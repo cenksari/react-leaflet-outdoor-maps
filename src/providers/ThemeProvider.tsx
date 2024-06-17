@@ -4,6 +4,10 @@ import { initialState, ThemeContext } from '../contexts/ThemeContext';
 
 import useLocalStorage from '../hooks/useLocalStorage';
 
+interface ITheme {
+  theme: string;
+}
+
 interface IProps {
   children: React.ReactNode;
 }
@@ -14,12 +18,9 @@ const ThemeProvider = ({ children }: IProps): React.JSX.Element => {
   const [theme, setTheme] = React.useState<string>(initialState.theme);
 
   React.useEffect(() => {
-    // eslint-disable-next-line
-    const getTheme: any = getData('theme');
+    const getTheme = getData<ITheme>('theme');
 
-    if (getTheme) {
-      setTheme(getTheme.theme);
-    }
+    if (getTheme) setTheme(getTheme.theme);
   }, [getData]);
 
   const changeTheme = (style: string): void => {

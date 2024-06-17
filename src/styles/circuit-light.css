@@ -61,8 +61,10 @@ body {
 .legend,
 .information {
   background-color: #ffffff;
-  box-shadow: 0 4px 6px -4px rgba(0, 0, 0, 0.1),
-    0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(17, 24, 39, 0.05);
+  box-shadow:
+    0 4px 6px -4px rgba(0, 0, 0, 0.1),
+    0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 0 0 1px rgba(17, 24, 39, 0.05);
 }
 
 .search-area {

@@ -11,9 +11,9 @@ export interface IData {
   id: number;
   name: string;
   topLogo: string;
+  maxBounds: IBounds;
   bottomLogo: string;
   defaultZoom: number;
-  maxBounds: IBounds;
   locations: ILocation[];
   centerCoords: LatLngExpression;
 }
