@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Map, LatLng, LatLngBounds } from 'leaflet';
-import { TileLayer, MapContainer } from 'react-leaflet';
+import { MapContainer, TileLayer } from 'react-leaflet';
 
 // hooks
 import useTheme from './hooks/useTheme';
@@ -32,6 +32,12 @@ const App = (): React.JSX.Element => {
   const [legendData, setLegendData] = React.useState<ILegend[] | null>(null);
   const [maxMapBounds, setMaxMapBounds] = React.useState<LatLngBounds | undefined>();
 
+  /**
+   * Prevents the default behavior of the mouse event.
+   *
+   * @param {MouseEvent} e - The mouse event to prevent.
+   * @return {void} This function does not return anything.
+   */
   const preventClick = (e: MouseEvent): void => {
     e.preventDefault();
   };
@@ -66,6 +72,11 @@ const App = (): React.JSX.Element => {
     return () => document.removeEventListener('contextmenu', preventClick);
   }, [theme]);
 
+  /**
+   * Change the application theme based on the current theme.
+   *
+   * @return {void} No return value
+   */
   const changeAppTheme = (): void => {
     setLoading(true);
 

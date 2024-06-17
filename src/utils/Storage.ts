@@ -1,7 +1,8 @@
 /**
- * Get data from local storage.
+ * Retrieves data from local storage with the specified key.
  *
- * @param {string} key - Storage key
+ * @param {string} key - The key used to identify the data in local storage.
+ * @return {T | null} The data retrieved from local storage, or null if no data is found or an error occurs.
  */
 const getData = <T>(key: string): T | null => {
   try {
@@ -14,10 +15,11 @@ const getData = <T>(key: string): T | null => {
 };
 
 /**
- * Set data to local storage.
+ * Sets the value of a key in local storage.
  *
- * @param {string} key - Storage key
- * @param {T} value - Storage value
+ * @param {string} key - The key to set the value for.
+ * @param {T} value - The value to set.
+ * @return {boolean} Returns true if the value was successfully set, false otherwise.
  */
 const setData = <T>(key: string, value: T): boolean => {
   try {
@@ -34,9 +36,10 @@ const setData = <T>(key: string, value: T): boolean => {
 };
 
 /**
- * Remove data from local storage.
+ * Removes the value associated with the specified key from the local storage.
  *
- * @param {string} key - Storage key
+ * @param {string} key - The key of the value to remove.
+ * @return {boolean} Returns true if the value was successfully removed, false otherwise.
  */
 const removeData = (key: string): boolean => {
   try {

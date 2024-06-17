@@ -23,6 +23,12 @@ const Legend = ({ map, logo, data, locations }: IProps): React.JSX.Element => {
   const [keyword, setKeyword] = React.useState<string>('');
   const [filteredResults, setFilteredResults] = React.useState<ILocation[] | null>(null);
 
+  /**
+   * Handles the change event of the input field.
+   *
+   * @param {React.ChangeEvent<HTMLInputElement>} e - The event object representing the input change.
+   * @return {void} This function does not return anything.
+   */
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     const searchKeyword = e.target.value;
 
@@ -45,12 +51,25 @@ const Legend = ({ map, logo, data, locations }: IProps): React.JSX.Element => {
     }
   };
 
+  /**
+   * Handles the close event of the autocompleter.
+   *
+   * This function resets the keyword state and filtered results state to empty values.
+   *
+   * @return {void} This function does not return anything.
+   */
   const handleAutocompleterClose = (): void => {
     setKeyword('');
     setFilteredResults(null);
   };
 
-  const handleClick = (coords: LatLngExpression): void => {
+  /**
+   * A function that handles clicking to locate a specific coordinates on the map.
+   *
+   * @param {LatLngExpression} coords - The coordinates to set the view to.
+   * @return {void} This function does not return anything.
+   */
+  const handleClickLocate = (coords: LatLngExpression): void => {
     map?.setView(coords, 18);
   };
 
@@ -104,7 +123,7 @@ const Legend = ({ map, logo, data, locations }: IProps): React.JSX.Element => {
                       <li key={item.id}>
                         <button
                           type='button'
-                          onClick={() => handleClick(item.shapeCoords[0])}
+                          onClick={() => handleClickLocate(item.shapeCoords[0])}
                           className='flex-space-between flex-gap flex-h-center no-select pointer active-opacity'
                         >
                           <span className='material-symbols-outlined'>{item.category.icon}</span>

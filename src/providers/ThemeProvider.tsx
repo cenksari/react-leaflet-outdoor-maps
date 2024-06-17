@@ -4,6 +4,7 @@ import { initialState, ThemeContext } from '../contexts/ThemeContext';
 
 import useLocalStorage from '../hooks/useLocalStorage';
 
+// interfaces
 interface ITheme {
   theme: string;
 }
@@ -23,6 +24,12 @@ const ThemeProvider = ({ children }: IProps): React.JSX.Element => {
     if (getTheme) setTheme(getTheme.theme);
   }, [getData]);
 
+  /**
+   * Updates the theme and saves it to local storage.
+   *
+   * @param {string} style - The new theme style.
+   * @return {void} This function does not return anything.
+   */
   const changeTheme = (style: string): void => {
     setTheme(style);
 
