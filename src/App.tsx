@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Map, LatLng, LatLngBounds } from 'leaflet';
-import { Popup, Polygon, Tooltip, TileLayer, MapContainer } from 'react-leaflet';
+import { TileLayer, MapContainer } from 'react-leaflet';
 
 // hooks
 import useTheme from './hooks/useTheme';
@@ -14,6 +14,7 @@ import './styles/circuit-core.css';
 import Legend from './components/Legend';
 import Loading from './components/Loading';
 import ErrorPage from './components/ErrorPage';
+import MapPolygon from './components/MapPolygon';
 import Information from './components/Information';
 import ThemeButton from './components/ThemeButton';
 import CenterButton from './components/CenterButton';
@@ -102,20 +103,9 @@ const App = (): React.JSX.Element => {
         center={mapData.centerCoords}
       >
         <TileLayer url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png' />
-        {/* Satellite Layer */}
-        {/* <TileLayer url='https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}' /> */}
-        {mapData?.locations?.map((loc) => (
-          <Polygon key={loc.id} pathOptions={{ color: loc.color }} positions={loc.shapeCoords}>
-            <Tooltip>{loc.title}</Tooltip>
-            <Popup>
-              <div className='flex flex-gap-medium flex-v-center'>
-                <span className='material-symbols-outlined'>{loc.category.icon}</span>
-                <strong className='popup-title'>{loc.title}</strong>
-              </div>
-              <p>{loc.description}</p>
-            </Popup>
-          </Polygon>
-        ))}
+        {mapData?.locations?.map(
+          (loc) => loc.shape === 'polygon' && <MapPolygon key={loc.id} location={loc} />
+        )}
       </MapContainer>
 
       <Legend

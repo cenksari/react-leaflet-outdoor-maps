@@ -21,7 +21,7 @@ export interface IData {
 export interface ILocation {
   id: number;
   title: string;
-  color: string;
+  shape: string;
   category: ILegend;
   description: string;
   shapeCoords: LatLngExpression[];
@@ -41,6 +41,7 @@ const data: IData = {
   locations: [
     {
       id: 1,
+      shape: 'polygon',
       shapeCoords: [
         [35.371559004199675, 138.92525211372896],
         [35.374275665054974, 138.9294636864413],
@@ -48,17 +49,18 @@ const data: IData = {
         [35.37131839375751, 138.9254559860386],
       ],
       title: 'Main area',
-      color: 'blue',
       category: {
         id: 5,
         name: 'Event area',
         icon: 'celebration',
+        color: 'navy',
       },
       description:
         'Lorem ipsum dolor sit amet consecteteur adipiscing elit. Vestibulum lacinia est euismod,',
     },
     {
       id: 2,
+      shape: 'polygon',
       shapeCoords: [
         [35.37035594481567, 138.92624464997328],
         [35.370784673489126, 138.92680261629442],
@@ -67,17 +69,18 @@ const data: IData = {
         [35.36999721091032, 138.92660947410636],
       ],
       title: 'Car parking 1',
-      color: 'purple',
       category: {
         id: 1,
         name: 'Car parking',
         icon: 'local_parking',
+        color: 'purple',
       },
       description:
         'Lorem ipsum dolor sit amet consecteteur adipiscing elit. Vestibulum lacinia est euismod,',
     },
     {
       id: 3,
+      shape: 'polygon',
       shapeCoords: [
         [35.37676913800418, 138.93284367473277],
         [35.376546040931395, 138.9330690072855],
@@ -85,17 +88,18 @@ const data: IData = {
         [35.3760998449354, 138.93177066257675],
       ],
       title: 'Car parking 2',
-      color: 'purple',
       category: {
         id: 1,
         name: 'Car parking',
         icon: 'local_parking',
+        color: 'purple',
       },
       description:
         'Lorem ipsum dolor sit amet consecteteur adipiscing elit. Vestibulum lacinia est euismod,',
     },
     {
       id: 4,
+      shape: 'polygon',
       shapeCoords: [
         [35.375986108306506, 138.92944759125896],
         [35.377455923160014, 138.93165799630037],
@@ -105,17 +109,18 @@ const data: IData = {
         [35.37585487353551, 138.92958708283925],
       ],
       title: 'Car parking 3',
-      color: 'purple',
       category: {
         id: 1,
         name: 'Car parking',
         icon: 'local_parking',
+        color: 'purple',
       },
       description:
         'Lorem ipsum dolor sit amet consecteteur adipiscing elit. Vestibulum lacinia est euismod,',
     },
     {
       id: 5,
+      shape: 'polygon',
       shapeCoords: [
         [35.37708847195658, 138.92846042007542],
         [35.377700889699334, 138.92936711534725],
@@ -123,17 +128,18 @@ const data: IData = {
         [35.376922243481516, 138.92862673695961],
       ],
       title: 'Car parking 4',
-      color: 'purple',
       category: {
         id: 1,
         name: 'Car parking',
         icon: 'local_parking',
+        color: 'purple',
       },
       description:
         'Lorem ipsum dolor sit amet consecteteur adipiscing elit. Vestibulum lacinia est euismod,',
     },
     {
       id: 6,
+      shape: 'polygon',
       shapeCoords: [
         [35.37021595128622, 138.92587446077945],
         [35.36953785419136, 138.9265611885593],
@@ -143,17 +149,18 @@ const data: IData = {
         [35.3699709620254, 138.92549890652484],
       ],
       title: 'Car parking 5',
-      color: 'purple',
       category: {
         id: 1,
         name: 'Car parking',
         icon: 'local_parking',
+        color: 'purple',
       },
       description:
         'Lorem ipsum dolor sit amet consecteteur adipiscing elit. Vestibulum lacinia est euismod,',
     },
     {
       id: 7,
+      shape: 'polygon',
       shapeCoords: [
         [35.368916624755826, 138.9242220220592],
         [35.369161617216896, 138.924592211253],
@@ -174,17 +181,18 @@ const data: IData = {
         [35.36872850503995, 138.92435614857868],
       ],
       title: 'Car parking 6',
-      color: 'purple',
       category: {
         id: 1,
         name: 'Car parking',
         icon: 'local_parking',
+        color: 'purple',
       },
       description:
         'Lorem ipsum dolor sit amet consecteteur adipiscing elit. Vestibulum lacinia est euismod,',
     },
     {
       id: 8,
+      shape: 'polygon',
       shapeCoords: [
         [35.37025523438974, 138.92332615460697],
         [35.370508972359595, 138.9237017088616],
@@ -198,17 +206,18 @@ const data: IData = {
         [35.37056584455374, 138.92298279071704],
       ],
       title: 'Car parking 7',
-      color: 'purple',
       category: {
         id: 1,
         name: 'Car parking',
         icon: 'local_parking',
+        color: 'purple',
       },
       description:
         'Lorem ipsum dolor sit amet consecteteur adipiscing elit. Vestibulum lacinia est euismod,',
     },
     {
       id: 9,
+      shape: 'polygon',
       shapeCoords: [
         [35.368273425904185, 138.9190716614084],
         [35.367989056456274, 138.91934527950818],
@@ -217,17 +226,18 @@ const data: IData = {
         [35.36873278981919, 138.91976375424903],
       ],
       title: 'Car parking 8',
-      color: 'purple',
       category: {
         id: 1,
         name: 'Car parking',
         icon: 'local_parking',
+        color: 'purple',
       },
       description:
         'Lorem ipsum dolor sit amet consecteteur adipiscing elit. Vestibulum lacinia est euismod,',
     },
     {
       id: 10,
+      shape: 'polygon',
       shapeCoords: [
         [35.36814655350505, 138.928374676801],
         [35.36838717340287, 138.92835858161865],
@@ -246,17 +256,18 @@ const data: IData = {
         [35.36808967960621, 138.92849807319894],
       ],
       title: 'Car parking 9',
-      color: 'purple',
       category: {
         id: 1,
         name: 'Car parking',
         icon: 'local_parking',
+        color: 'purple',
       },
       description:
         'Lorem ipsum dolor sit amet consecteteur adipiscing elit. Vestibulum lacinia est euismod,',
     },
     {
       id: 11,
+      shape: 'polygon',
       shapeCoords: [
         [35.37004961855321, 138.93449084609028],
         [35.368776538627124, 138.93436208463152],
@@ -264,17 +275,18 @@ const data: IData = {
         [35.36999712080887, 138.93498443168204],
       ],
       title: 'Car parking 10',
-      color: 'purple',
       category: {
         id: 1,
         name: 'Car parking',
         icon: 'local_parking',
+        color: 'purple',
       },
       description:
         'Lorem ipsum dolor sit amet consecteteur adipiscing elit. Vestibulum lacinia est euismod,',
     },
     {
       id: 12,
+      shape: 'polygon',
       shapeCoords: [
         [35.37043022617846, 138.93505417747215],
         [35.37069708792577, 138.93504344735064],
@@ -291,17 +303,18 @@ const data: IData = {
         [35.37052647150052, 138.9357730956167],
       ],
       title: 'Car parking 11',
-      color: 'purple',
       category: {
         id: 1,
         name: 'Car parking',
         icon: 'local_parking',
+        color: 'purple',
       },
       description:
         'Lorem ipsum dolor sit amet consecteteur adipiscing elit. Vestibulum lacinia est euismod,',
     },
     {
       id: 13,
+      shape: 'polygon',
       shapeCoords: [
         [35.37190889164484, 138.92511808490752],
         [35.37266133822718, 138.92481764150384],
@@ -311,17 +324,18 @@ const data: IData = {
         [35.37268321156944, 138.92663103204748],
       ],
       title: 'Fan area',
-      color: 'red',
       category: {
         id: 5,
         name: 'Event area',
         icon: 'celebration',
+        color: 'navy',
       },
       description:
         'Lorem ipsum dolor sit amet consecteteur adipiscing elit. Vestibulum lacinia est euismod,',
     },
     {
       id: 14,
+      shape: 'polygon',
       shapeCoords: [
         [35.37297631378335, 138.92646471516332],
         [35.373098803945425, 138.92663639710824],
@@ -329,17 +343,18 @@ const data: IData = {
         [35.37274445689612, 138.92670614289838],
       ],
       title: 'Toilets 1',
-      color: 'green',
       category: {
         id: 3,
         name: 'Toilets',
         icon: 'follow_the_signs',
+        color: 'green',
       },
       description:
         'Lorem ipsum dolor sit amet consecteteur adipiscing elit. Vestibulum lacinia est euismod,',
     },
     {
       id: 15,
+      shape: 'polygon',
       shapeCoords: [
         [35.3733962792793, 138.93142203132408],
         [35.373269414932786, 138.93158298314748],
@@ -347,17 +362,18 @@ const data: IData = {
         [35.37346627331613, 138.93150250723576],
       ],
       title: 'Toilets 2',
-      color: 'green',
       category: {
         id: 3,
         name: 'Toilets',
         icon: 'follow_the_signs',
+        color: 'green',
       },
       description:
         'Lorem ipsum dolor sit amet consecteteur adipiscing elit. Vestibulum lacinia est euismod,',
     },
     {
       id: 16,
+      shape: 'polygon',
       shapeCoords: [
         [35.37079781431877, 138.9301933167104],
         [35.37071469364502, 138.93024160225744],
@@ -365,17 +381,18 @@ const data: IData = {
         [35.37088093490696, 138.93037036371612],
       ],
       title: 'Toilets 3',
-      color: 'green',
       category: {
         id: 3,
         name: 'Toilets',
         icon: 'follow_the_signs',
+        color: 'green',
       },
       description:
         'Lorem ipsum dolor sit amet consecteteur adipiscing elit. Vestibulum lacinia est euismod,',
     },
     {
       id: 17,
+      shape: 'polygon',
       shapeCoords: [
         [35.37154589653052, 138.92829408519424],
         [35.37113467090973, 138.92867500450967],
@@ -383,17 +400,18 @@ const data: IData = {
         [35.37165963941742, 138.92850332256467],
       ],
       title: 'Restaurant 1',
-      color: 'yellow',
       category: {
         id: 2,
         name: 'Restaurant',
         icon: 'restaurant',
+        color: 'yellow',
       },
       description:
         'Lorem ipsum dolor sit amet consecteteur adipiscing elit. Vestibulum lacinia est euismod,',
     },
     {
       id: 18,
+      shape: 'polygon',
       shapeCoords: [
         [35.37373315155337, 138.9300216456922],
         [35.37202266054937, 138.92745714663928],
@@ -406,17 +424,18 @@ const data: IData = {
         [35.37368503081869, 138.93020942281947],
       ],
       title: 'Media area',
-      color: 'orange',
       category: {
         id: 4,
         name: 'Media area',
         icon: 'videocam',
+        color: 'orange',
       },
       description:
         'Lorem ipsum dolor sit amet consecteteur adipiscing elit. Vestibulum lacinia est euismod,',
     },
     {
       id: 19,
+      shape: 'polygon',
       shapeCoords: [
         [35.37182593729761, 138.92798825423353],
         [35.37338769519948, 138.93039716652376],
@@ -434,17 +453,18 @@ const data: IData = {
         [35.371720944085595, 138.9285354904331],
       ],
       title: 'Paddock',
-      color: 'navy',
       category: {
         id: 5,
         name: 'Event area',
         icon: 'celebration',
+        color: 'navy',
       },
       description:
         'Lorem ipsum dolor sit amet consecteteur adipiscing elit. Vestibulum lacinia est euismod,',
     },
     {
       id: 20,
+      shape: 'polygon',
       shapeCoords: [
         [35.36658966087419, 138.92367538233188],
         [35.36620466012015, 138.92420115828835],
@@ -453,17 +473,18 @@ const data: IData = {
         [35.36613465978576, 138.9226184653582],
       ],
       title: 'Car parking 12',
-      color: 'purple',
       category: {
         id: 1,
         name: 'Car parking',
         icon: 'local_parking',
+        color: 'purple',
       },
       description:
         'Lorem ipsum dolor sit amet consecteteur adipiscing elit. Vestibulum lacinia est euismod,',
     },
     {
       id: 21,
+      shape: 'polygon',
       shapeCoords: [
         [35.36610411421385, 138.92420226256033],
         [35.36593348807992, 138.92435252797017],
@@ -473,17 +494,18 @@ const data: IData = {
         [35.36587661262182, 138.9237031667348],
       ],
       title: 'Car parking 13',
-      color: 'purple',
       category: {
         id: 1,
         name: 'Car parking',
         icon: 'local_parking',
+        color: 'purple',
       },
       description:
         'Lorem ipsum dolor sit amet consecteteur adipiscing elit. Vestibulum lacinia est euismod,',
     },
     {
       id: 22,
+      shape: 'polygon',
       shapeCoords: [
         [35.369354691930766, 138.92324700388357],
         [35.36882970843091, 138.92252250994335],
@@ -496,17 +518,18 @@ const data: IData = {
         [35.36922344637593, 138.9234992351072],
       ],
       title: 'Car parking 14',
-      color: 'purple',
       category: {
         id: 1,
         name: 'Car parking',
         icon: 'local_parking',
+        color: 'purple',
       },
       description:
         'Lorem ipsum dolor sit amet consecteteur adipiscing elit. Vestibulum lacinia est euismod,',
     },
     {
       id: 23,
+      shape: 'polygon',
       shapeCoords: [
         [35.366537229960244, 138.93126845724288],
         [35.366699104834076, 138.93159582117138],
@@ -519,17 +542,18 @@ const data: IData = {
         [35.36637097975189, 138.93135432319136],
       ],
       title: 'Car parking 15',
-      color: 'purple',
       category: {
         id: 1,
         name: 'Car parking',
         icon: 'local_parking',
+        color: 'purple',
       },
       description:
         'Lorem ipsum dolor sit amet consecteteur adipiscing elit. Vestibulum lacinia est euismod,',
     },
     {
       id: 24,
+      shape: 'polygon',
       shapeCoords: [
         [35.37006340372743, 138.93511632505874],
         [35.370037154864015, 138.93540075601302],
@@ -537,17 +561,18 @@ const data: IData = {
         [35.36880782353233, 138.93496069302716],
       ],
       title: 'Car parking 16',
-      color: 'purple',
       category: {
         id: 1,
         name: 'Car parking',
         icon: 'local_parking',
+        color: 'purple',
       },
       description:
         'Lorem ipsum dolor sit amet consecteteur adipiscing elit. Vestibulum lacinia est euismod,',
     },
     {
       id: 25,
+      shape: 'polygon',
       shapeCoords: [
         [35.371642694634836, 138.93749373850702],
         [35.370426512128866, 138.935985717787],
@@ -558,17 +583,18 @@ const data: IData = {
         [35.37105647945576, 138.93810016676812],
       ],
       title: 'Car parking 17',
-      color: 'purple',
       category: {
         id: 1,
         name: 'Car parking',
         icon: 'local_parking',
+        color: 'purple',
       },
       description:
         'Lorem ipsum dolor sit amet consecteteur adipiscing elit. Vestibulum lacinia est euismod,',
     },
     {
       id: 26,
+      shape: 'polygon',
       shapeCoords: [
         [35.370177148703576, 138.9330770087825],
         [35.370010905992075, 138.93357610460802],
@@ -587,17 +613,18 @@ const data: IData = {
         [35.36989278596261, 138.9329857762123],
       ],
       title: 'Car parking 18',
-      color: 'purple',
       category: {
         id: 1,
         name: 'Car parking',
         icon: 'local_parking',
+        color: 'purple',
       },
       description:
         'Lorem ipsum dolor sit amet consecteteur adipiscing elit. Vestibulum lacinia est euismod,',
     },
     {
       id: 27,
+      shape: 'polygon',
       shapeCoords: [
         [35.37865006845416, 138.93598490019585],
         [35.37790642648104, 138.93643032980358],
@@ -606,17 +633,18 @@ const data: IData = {
         [35.37853196106918, 138.9357648687029],
       ],
       title: 'Car parking 19',
-      color: 'purple',
       category: {
         id: 1,
         name: 'Car parking',
         icon: 'local_parking',
+        color: 'purple',
       },
       description:
         'Lorem ipsum dolor sit amet consecteteur adipiscing elit. Vestibulum lacinia est euismod,',
     },
     {
       id: 28,
+      shape: 'polygon',
       shapeCoords: [
         [35.37856258151893, 138.93624249804128],
         [35.37795017031623, 138.9365805952134],
@@ -626,17 +654,18 @@ const data: IData = {
         [35.37856695586792, 138.93643569642535],
       ],
       title: 'Car parking 20',
-      color: 'purple',
       category: {
         id: 1,
         name: 'Car parking',
         icon: 'local_parking',
+        color: 'purple',
       },
       description:
         'Lorem ipsum dolor sit amet consecteteur adipiscing elit. Vestibulum lacinia est euismod,',
     },
     {
       id: 29,
+      shape: 'polygon',
       shapeCoords: [
         [35.37604729156397, 138.93633909723331],
         [35.376073538472646, 138.93643032980358],
@@ -649,17 +678,18 @@ const data: IData = {
         [35.37469118966672, 138.93668256102723],
       ],
       title: 'Car parking 21',
-      color: 'purple',
       category: {
         id: 1,
         name: 'Car parking',
         icon: 'local_parking',
+        color: 'purple',
       },
       description:
         'Lorem ipsum dolor sit amet consecteteur adipiscing elit. Vestibulum lacinia est euismod,',
     },
     {
       id: 30,
+      shape: 'polygon',
       shapeCoords: [
         [35.36591614863228, 138.92246495802354],
         [35.36588989842018, 138.92270108938186],
@@ -667,17 +697,18 @@ const data: IData = {
         [35.36600364927765, 138.92249179113242],
       ],
       title: 'Toilets 4',
-      color: 'green',
       category: {
         id: 3,
         name: 'Toilets',
         icon: 'follow_the_signs',
+        color: 'green',
       },
       description:
         'Lorem ipsum dolor sit amet consecteteur adipiscing elit. Vestibulum lacinia est euismod,',
     },
     {
       id: 31,
+      shape: 'polygon',
       shapeCoords: [
         [35.37016408385838, 138.92603863008128],
         [35.37004596405313, 138.9261566957604],
@@ -685,17 +716,18 @@ const data: IData = {
         [35.37021220669246, 138.92610302954262],
       ],
       title: 'Toilets 5',
-      color: 'green',
       category: {
         id: 3,
         name: 'Toilets',
         icon: 'follow_the_signs',
+        color: 'green',
       },
       description:
         'Lorem ipsum dolor sit amet consecteteur adipiscing elit. Vestibulum lacinia est euismod,',
     },
     {
       id: 32,
+      shape: 'polygon',
       shapeCoords: [
         [35.368658828761966, 138.9281553956946],
         [35.368663203647834, 138.9283378608351],
@@ -703,17 +735,18 @@ const data: IData = {
         [35.36857133099479, 138.92813929582925],
       ],
       title: 'Toilets 6',
-      color: 'green',
       category: {
         id: 3,
         name: 'Toilets',
         icon: 'follow_the_signs',
+        color: 'green',
       },
       description:
         'Lorem ipsum dolor sit amet consecteteur adipiscing elit. Vestibulum lacinia est euismod,',
     },
     {
       id: 33,
+      shape: 'polygon',
       shapeCoords: [
         [35.37592443348523, 138.93150744955958],
         [35.375867565067196, 138.93158258226447],
@@ -721,17 +754,18 @@ const data: IData = {
         [35.376086289532566, 138.93176504740498],
       ],
       title: 'Toilets 7',
-      color: 'green',
       category: {
         id: 3,
         name: 'Toilets',
         icon: 'follow_the_signs',
+        color: 'green',
       },
       description:
         'Lorem ipsum dolor sit amet consecteteur adipiscing elit. Vestibulum lacinia est euismod,',
     },
     {
       id: 34,
+      shape: 'polygon',
       shapeCoords: [
         [35.37630501340503, 138.92899587056678],
         [35.37623502183035, 138.9290441701628],
@@ -739,17 +773,18 @@ const data: IData = {
         [35.37620440049732, 138.92882950529165],
       ],
       title: 'Toilets 8',
-      color: 'green',
       category: {
         id: 3,
         name: 'Toilets',
         icon: 'follow_the_signs',
+        color: 'green',
       },
       description:
         'Lorem ipsum dolor sit amet consecteteur adipiscing elit. Vestibulum lacinia est euismod,',
     },
     {
       id: 35,
+      shape: 'polygon',
       shapeCoords: [
         [35.37463832254362, 138.93705653647953],
         [35.37435835009818, 138.93712630256263],
@@ -757,17 +792,18 @@ const data: IData = {
         [35.374668944470926, 138.93718533540223],
       ],
       title: 'Toilets 9',
-      color: 'green',
       category: {
         id: 3,
         name: 'Toilets',
         icon: 'follow_the_signs',
+        color: 'green',
       },
       description:
         'Lorem ipsum dolor sit amet consecteteur adipiscing elit. Vestibulum lacinia est euismod,',
     },
     {
       id: 36,
+      shape: 'polygon',
       shapeCoords: [
         [35.369503022666294, 138.927838048791],
         [35.36953364654211, 138.9280902800146],
@@ -778,17 +814,18 @@ const data: IData = {
         [35.36869367316563, 138.9281224797453],
       ],
       title: 'Car parking 22',
-      color: 'purple',
       category: {
         id: 1,
         name: 'Car parking',
         icon: 'local_parking',
+        color: 'purple',
       },
       description:
         'Lorem ipsum dolor sit amet consecteteur adipiscing elit. Vestibulum lacinia est euismod,',
     },
     {
       id: 37,
+      shape: 'polygon',
       shapeCoords: [
         [35.36587210192523, 138.92049858612887],
         [35.365819601463855, 138.92059518532085],
@@ -796,17 +833,18 @@ const data: IData = {
         [35.3657364756635, 138.92038052044973],
       ],
       title: 'Toilets 10',
-      color: 'green',
       category: {
         id: 3,
         name: 'Toilets',
         icon: 'follow_the_signs',
+        color: 'green',
       },
       description:
         'Lorem ipsum dolor sit amet consecteteur adipiscing elit. Vestibulum lacinia est euismod,',
     },
     {
       id: 38,
+      shape: 'polygon',
       shapeCoords: [
         [35.37033451634248, 138.92263986821885],
         [35.37019889757849, 138.9227794003851],
@@ -823,17 +861,18 @@ const data: IData = {
         [35.37021639678664, 138.92246276970013],
       ],
       title: 'Car parking 23',
-      color: 'purple',
       category: {
         id: 1,
         name: 'Car parking',
         icon: 'local_parking',
+        color: 'purple',
       },
       description:
         'Lorem ipsum dolor sit amet consecteteur adipiscing elit. Vestibulum lacinia est euismod,',
     },
     {
       id: 39,
+      shape: 'polygon',
       shapeCoords: [
         [35.373230578780124, 138.9274805610639],
         [35.37404863197401, 138.92874171718208],
@@ -861,17 +900,18 @@ const data: IData = {
         [35.3733311953956, 138.9274107949808],
       ],
       title: 'Restaurant 2',
-      color: 'yellow',
       category: {
         id: 2,
         name: 'Restaurant',
         icon: 'restaurant',
+        color: 'yellow',
       },
       description:
         'Lorem ipsum dolor sit amet consecteteur adipiscing elit. Vestibulum lacinia est euismod,',
     },
     {
       id: 40,
+      shape: 'polygon',
       shapeCoords: [
         [35.37797140707246, 138.92897581447943],
         [35.37780955480637, 138.9291046134022],
@@ -881,17 +921,18 @@ const data: IData = {
         [35.37771331816992, 138.92828888689166],
       ],
       title: 'Car parking 24',
-      color: 'purple',
       category: {
         id: 1,
         name: 'Car parking',
         icon: 'local_parking',
+        color: 'purple',
       },
       description:
         'Lorem ipsum dolor sit amet consecteteur adipiscing elit. Vestibulum lacinia est euismod,',
     },
     {
       id: 41,
+      shape: 'polygon',
       shapeCoords: [
         [35.37707023597182, 138.9360533660667],
         [35.37652780482404, 138.9359996998489],
@@ -903,17 +944,18 @@ const data: IData = {
         [35.377118354687894, 138.93654172864865],
       ],
       title: 'Car parking 25',
-      color: 'purple',
       category: {
         id: 1,
         name: 'Car parking',
         icon: 'local_parking',
+        color: 'purple',
       },
       description:
         'Lorem ipsum dolor sit amet consecteteur adipiscing elit. Vestibulum lacinia est euismod,',
     },
     {
       id: 42,
+      shape: 'polygon',
       shapeCoords: [
         [35.37484799491376, 138.9358655343044],
         [35.37490923859762, 138.93604799944492],
@@ -930,17 +972,18 @@ const data: IData = {
         [35.37466426358336, 138.93598896660535],
       ],
       title: 'Car parking 26',
-      color: 'purple',
       category: {
         id: 1,
         name: 'Car parking',
         icon: 'local_parking',
+        color: 'purple',
       },
       description:
         'Lorem ipsum dolor sit amet consecteteur adipiscing elit. Vestibulum lacinia est euismod,',
     },
     {
       id: 43,
+      shape: 'polygon',
       shapeCoords: [
         [35.37381121978395, 138.93632169715568],
         [35.37373685143566, 138.9363968298606],
@@ -955,17 +998,18 @@ const data: IData = {
         [35.37371060376696, 138.93613923201517],
       ],
       title: 'Car parking 27',
-      color: 'purple',
       category: {
         id: 1,
         name: 'Car parking',
         icon: 'local_parking',
+        color: 'purple',
       },
       description:
         'Lorem ipsum dolor sit amet consecteteur adipiscing elit. Vestibulum lacinia est euismod,',
     },
     {
       id: 44,
+      shape: 'polygon',
       shapeCoords: [
         [35.367757598513165, 138.91931871676042],
         [35.367617600477054, 138.91944751568315],
@@ -976,11 +1020,11 @@ const data: IData = {
         [35.36762635036142, 138.9191684513506],
       ],
       title: 'Accreditation',
-      color: 'red',
       category: {
         id: 5,
         name: 'Event area',
         icon: 'celebration',
+        color: 'navy',
       },
       description:
         'Lorem ipsum dolor sit amet consecteteur adipiscing elit. Vestibulum lacinia est euismod,',
