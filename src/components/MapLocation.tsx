@@ -3,7 +3,8 @@ import React from 'react';
 import { LatLngBoundsExpression } from 'leaflet';
 import { Popup, Tooltip, Circle, Polygon, Rectangle, Polyline, Marker } from 'react-leaflet';
 
-import { type ILocation } from '../data/data';
+// types
+import type { ILocation } from '../types/types';
 
 // interfaces
 interface IProps {

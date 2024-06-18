@@ -2,6 +2,7 @@ import React from 'react';
 
 import { initialState, ThemeContext } from '../contexts/ThemeContext';
 
+// utils
 import useLocalStorage from '../hooks/useLocalStorage';
 
 // interfaces

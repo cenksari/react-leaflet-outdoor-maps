@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Map } from 'leaflet';
+import type { Map } from 'leaflet';
 import { MapContainer, TileLayer } from 'react-leaflet';
 
 // hooks
@@ -19,8 +19,10 @@ import Information from './components/Information';
 import ThemeButton from './components/ThemeButton';
 import CenterButton from './components/CenterButton';
 
-// data
-import data, { type IData } from './data/data';
+// types
+import type { IData } from './types/types';
+
+import data from './data/data';
 
 const App = (): React.JSX.Element => {
   const { theme, changeTheme } = useTheme();

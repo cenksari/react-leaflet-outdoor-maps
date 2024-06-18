@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Map, type LatLngExpression } from 'leaflet';
+import type { Map, LatLngExpression } from 'leaflet';
 
 // interfaces
 interface IProps {

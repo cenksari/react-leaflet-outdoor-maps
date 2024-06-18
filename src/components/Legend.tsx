@@ -1,10 +1,9 @@
 import React from 'react';
-
 import Swipe from 'react-easy-swipe';
 
-import { Map, type LatLngExpression } from 'leaflet';
-
-import { type ILegend, type ILocation } from '../data/data';
+// types
+import type { Map, LatLngExpression } from 'leaflet';
+import type { ILegend, ILocation } from '../types/types';
 
 // interfaces
 interface IProps {
