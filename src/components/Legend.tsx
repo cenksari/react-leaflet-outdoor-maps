@@ -123,7 +123,7 @@ const Legend = ({ map, logo, data, locations }: IProps): React.JSX.Element => {
                       <li key={item.id}>
                         <button
                           type='button'
-                          onClick={() => handleClickLocate(item.shapeCoords[0])}
+                          onClick={() => handleClickLocate(item.shape.location[0])}
                           className='flex-space-between flex-gap flex-h-center no-select pointer active-opacity'
                         >
                           <span className='material-symbols-outlined'>{item.category.icon}</span>

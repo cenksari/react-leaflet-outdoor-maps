@@ -14,7 +14,7 @@ import './styles/circuit-core.css';
 import Legend from './components/Legend';
 import Loading from './components/Loading';
 import ErrorPage from './components/ErrorPage';
-import MapPolygon from './components/MapPolygon';
+import MapLocation from './components/MapLocation';
 import Information from './components/Information';
 import ThemeButton from './components/ThemeButton';
 import CenterButton from './components/CenterButton';
@@ -114,9 +114,7 @@ const App = (): React.JSX.Element => {
         center={mapData.centerCoords}
       >
         <TileLayer url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png' />
-        {mapData?.locations?.map(
-          (loc) => loc.shape === 'polygon' && <MapPolygon key={loc.id} location={loc} />
-        )}
+        {mapData?.locations?.map((loc) => <MapLocation key={loc.id} location={loc} />)}
       </MapContainer>
 
       <Legend
