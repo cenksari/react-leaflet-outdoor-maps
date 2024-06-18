@@ -84,9 +84,9 @@ const Legend = ({ map, logo, data, locations }: IProps): React.JSX.Element => {
    */
   const countItems = React.useCallback(
     (categoryId: number): string => {
-      const count = locations?.filter((l) => l.category.id === categoryId).length;
+      const count = locations?.filter((l) => l.category.id === categoryId).length || 0;
 
-      return count?.toString() || '0';
+      return count.toString();
     },
     [locations]
   );
