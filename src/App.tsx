@@ -106,12 +106,7 @@ const App = (): React.JSX.Element => {
         {mapData?.locations?.map((loc) => <MapLocation key={loc.id} location={loc} />)}
       </MapContainer>
 
-      <Legend
-        map={mapRefer}
-        data={mapData.legend}
-        logo={mapData.bottomLogo}
-        locations={mapData.locations}
-      />
+      <Legend map={mapRefer} data={mapData} />
     </>
   );
 };

@@ -3,17 +3,15 @@ import Swipe from 'react-easy-swipe';
 
 // types
 import type { Map, LatLngExpression } from 'leaflet';
-import type { ILegend, ILocation } from '../types/types';
+import type { IData, ILocation } from '../types/types';
 
 // interfaces
 interface IProps {
   map: Map | null;
-  logo?: string;
-  data: ILegend[] | null;
-  locations?: ILocation[];
+  data: IData | null;
 }
 
-const Legend = ({ map, logo, data, locations }: IProps): React.JSX.Element => {
+const Legend = ({ map, data }: IProps): React.JSX.Element => {
   const inputRef = React.useRef<HTMLInputElement>(null);
 
   const [close, setClose] = React.useState<boolean>(false);
@@ -33,7 +31,7 @@ const Legend = ({ map, logo, data, locations }: IProps): React.JSX.Element => {
       if (searchKeyword != null && searchKeyword?.trim().length > 0) {
         setKeyword(searchKeyword);
 
-        const results = locations?.filter((s) =>
+        const results = data?.locations?.filter((s) =>
           s.title.toLocaleLowerCase('tr-TR').includes(searchKeyword.toLocaleLowerCase('tr-TR'))
         );
 
@@ -48,7 +46,7 @@ const Legend = ({ map, logo, data, locations }: IProps): React.JSX.Element => {
         setFilteredResults(null);
       }
     },
-    [locations]
+    [data]
   );
 
   /**
@@ -81,11 +79,11 @@ const Legend = ({ map, logo, data, locations }: IProps): React.JSX.Element => {
    */
   const countItems = React.useCallback(
     (categoryId: number): string => {
-      const count = locations?.filter((l) => l.category.id === categoryId).length || 0;
+      const count = data?.locations?.filter((l) => l.category.id === categoryId).length || 0;
 
       return count.toString();
     },
-    [locations]
+    [data]
   );
 
   return (
@@ -158,7 +156,7 @@ const Legend = ({ map, logo, data, locations }: IProps): React.JSX.Element => {
 
           <div className='flex flex-space-between legend-content'>
             <div className='grid flex-gap'>
-              {data?.map((item) => (
+              {data?.legend?.map((item) => (
                 <div key={item.id} className='flex flex-v-center flex-gap no-select'>
                   <span className='material-symbols-outlined'>{item.icon}</span>
                   <em>
@@ -168,9 +166,9 @@ const Legend = ({ map, logo, data, locations }: IProps): React.JSX.Element => {
               ))}
             </div>
 
-            {logo && (
+            {data?.bottomLogo && (
               <div className='flex flex-v-end'>
-                <img src={logo} width='150' alt='FIA logo' draggable='false' />
+                <img src={data.bottomLogo} width='150' alt='FIA logo' draggable='false' />
               </div>
             )}
           </div>
