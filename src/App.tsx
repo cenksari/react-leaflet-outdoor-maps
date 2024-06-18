@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Map, LatLng, LatLngBounds } from 'leaflet';
+import { Map } from 'leaflet';
 import { MapContainer, TileLayer } from 'react-leaflet';
 
 // hooks
@@ -21,7 +21,6 @@ import CenterButton from './components/CenterButton';
 
 // data
 import data, { type IData } from './data/data';
-import legend, { type ILegend } from './data/legend';
 
 const App = (): React.JSX.Element => {
   const { theme, changeTheme } = useTheme();
@@ -29,8 +28,6 @@ const App = (): React.JSX.Element => {
   const [loading, setLoading] = React.useState<boolean>(true);
   const [mapData, setMapData] = React.useState<IData | null>(null);
   const [mapRefer, setMapRefer] = React.useState<Map | null>(null);
-  const [legendData, setLegendData] = React.useState<ILegend[] | null>(null);
-  const [maxMapBounds, setMaxMapBounds] = React.useState<LatLngBounds | undefined>();
 
   /**
    * Prevents the default behavior of the mouse event.
@@ -50,18 +47,8 @@ const App = (): React.JSX.Element => {
     }
 
     const getData = data;
-    const getLegend = legend;
 
     setMapData(getData);
-
-    setLegendData(getLegend);
-
-    setMaxMapBounds(
-      new LatLngBounds(
-        new LatLng(getData.maxBounds.southWest[0], getData.maxBounds.southWest[1]),
-        new LatLng(getData.maxBounds.northEast[0], getData.maxBounds.northEast[1])
-      )
-    );
 
     document.addEventListener('contextmenu', preventClick);
 
@@ -109,9 +96,9 @@ const App = (): React.JSX.Element => {
         minZoom={15}
         scrollWheelZoom
         ref={setMapRefer}
-        maxBounds={maxMapBounds}
         zoom={mapData.defaultZoom}
         center={mapData.centerCoords}
+        maxBounds={mapData.maxMapBounds}
       >
         <TileLayer url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png' />
         {mapData?.locations?.map((loc) => <MapLocation key={loc.id} location={loc} />)}
@@ -119,7 +106,7 @@ const App = (): React.JSX.Element => {
 
       <Legend
         map={mapRefer}
-        data={legendData}
+        data={mapData.legend}
         logo={mapData.bottomLogo}
         locations={mapData.locations}
       />

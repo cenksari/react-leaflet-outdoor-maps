@@ -4,9 +4,7 @@ import Swipe from 'react-easy-swipe';
 
 import { Map, type LatLngExpression } from 'leaflet';
 
-// data
-import { type ILegend } from '../data/legend';
-import { type ILocation } from '../data/data';
+import { type ILegend, type ILocation } from '../data/data';
 
 // interfaces
 interface IProps {

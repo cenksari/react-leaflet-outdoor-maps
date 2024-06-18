@@ -1,16 +1,16 @@
-import { type LatLngExpression } from 'leaflet';
+import { type LatLngBoundsExpression, type LatLngExpression } from 'leaflet';
 
-import { type ILegend } from './legend';
+export interface ILegend {
+  id: number;
+  name: string;
+  icon: string;
+  color: string;
+}
 
 interface IShape {
   type: string;
   radius?: number;
   location: LatLngExpression[];
-}
-
-interface IBounds {
-  southWest: number[];
-  northEast: number[];
 }
 
 export interface ILocation {
@@ -25,11 +25,12 @@ export interface IData {
   id: number;
   name: string;
   topLogo: string;
-  maxBounds: IBounds;
+  legend: ILegend[];
   bottomLogo: string;
   defaultZoom: number;
   locations: ILocation[];
   centerCoords: LatLngExpression;
+  maxMapBounds: LatLngBoundsExpression;
 }
 
 const data: IData = {
@@ -39,10 +40,42 @@ const data: IData = {
   bottomLogo: 'images/fia-logo.png',
   defaultZoom: 16,
   centerCoords: [35.370002237772944, 138.92797321568233],
-  maxBounds: {
-    northEast: [35.38128090185919, 138.91165280626322],
-    southWest: [35.35359620534039, 138.94354833021418],
-  },
+  maxMapBounds: [
+    [35.38128090185919, 138.91165280626322],
+    [35.35359620534039, 138.94354833021418],
+  ],
+  legend: [
+    {
+      id: 1,
+      name: 'Car parking',
+      icon: 'local_parking',
+      color: 'purple',
+    },
+    {
+      id: 2,
+      name: 'Restaurant',
+      icon: 'restaurant',
+      color: 'yellow',
+    },
+    {
+      id: 3,
+      name: 'Toilets',
+      icon: 'follow_the_signs',
+      color: 'green',
+    },
+    {
+      id: 4,
+      name: 'Media area',
+      icon: 'videocam',
+      color: 'orange',
+    },
+    {
+      id: 5,
+      name: 'Event area',
+      icon: 'celebration',
+      color: 'navy',
+    },
+  ],
   locations: [
     {
       id: 1,
