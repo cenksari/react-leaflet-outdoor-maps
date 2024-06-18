@@ -29,27 +29,30 @@ const Legend = ({ map, logo, data, locations }: IProps): React.JSX.Element => {
    * @param {React.ChangeEvent<HTMLInputElement>} e - The event object representing the input change.
    * @return {void} This function does not return anything.
    */
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    const searchKeyword = e.target.value;
+  const handleChange = React.useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>): void => {
+      const searchKeyword = e.target.value;
 
-    if (searchKeyword != null && searchKeyword?.trim().length > 0) {
-      setKeyword(searchKeyword);
+      if (searchKeyword != null && searchKeyword?.trim().length > 0) {
+        setKeyword(searchKeyword);
 
-      const results = locations?.filter((s) =>
-        s.title.toLocaleLowerCase('tr-TR').includes(searchKeyword.toLocaleLowerCase('tr-TR'))
-      );
+        const results = locations?.filter((s) =>
+          s.title.toLocaleLowerCase('tr-TR').includes(searchKeyword.toLocaleLowerCase('tr-TR'))
+        );
 
-      if (!results) {
-        setFilteredResults(null);
+        if (!results) {
+          setFilteredResults(null);
+        } else {
+          setClose(false);
+          setFilteredResults(results);
+        }
       } else {
-        setClose(false);
-        setFilteredResults(results);
+        setKeyword('');
+        setFilteredResults(null);
       }
-    } else {
-      setKeyword('');
-      setFilteredResults(null);
-    }
-  };
+    },
+    [locations]
+  );
 
   /**
    * Handles the close event of the autocompleter.
