@@ -76,6 +76,21 @@ const Legend = ({ map, logo, data, locations }: IProps): React.JSX.Element => {
     map?.setView(coords, 18);
   };
 
+  /**
+   * Returns the count of items belonging to a specific category.
+   *
+   * @param {number} categoryId - The ID of the category.
+   * @return {string} The count of items as a string, or '0' if no items are found.
+   */
+  const countItems = React.useCallback(
+    (categoryId: number): string => {
+      const count = locations?.filter((l) => l.category.id === categoryId).length;
+
+      return count?.toString() || '0';
+    },
+    [locations]
+  );
+
   return (
     <div className='legend'>
       <Swipe onSwipeUp={() => setClose(false)} onSwipeDown={() => setClose(true)}>
@@ -149,7 +164,9 @@ const Legend = ({ map, logo, data, locations }: IProps): React.JSX.Element => {
               {data?.map((item) => (
                 <div key={item.id} className='flex flex-v-center flex-gap no-select'>
                   <span className='material-symbols-outlined'>{item.icon}</span>
-                  <em>{item.name}</em>
+                  <em>
+                    {item.name} <strong>({countItems(item.id)})</strong>
+                  </em>
                 </div>
               ))}
             </div>
