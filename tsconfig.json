@@ -24,8 +24,7 @@
     "**/*.mjs",
     ".eslintrc.cjs",
     ".prettierrc.cjs",
-    "declaration.d.ts",
-    ".eslint.config.mjs"
+    "declaration.d.ts"
   ],
   "exclude": ["node_modules"]
 }

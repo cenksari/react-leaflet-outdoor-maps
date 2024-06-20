@@ -1,8 +1,9 @@
+// interfaces
 export interface IRequest {
   url: string;
   method: string;
-  headers?: any;
-  postData?: any;
+  headers?: HeadersInit;
+  postData?: object | [];
 }
 
 export interface IResponse {
@@ -19,7 +20,7 @@ const { signal } = controller;
  * Retrieves a response from the server based on the provided request parameters.
  *
  * @param {IRequest} parameters - The request parameters including the URL, HTTP method, headers, and post data.
- * @return {Promise<IResponse | IError>} A promise that resolves to either an IResponse or IError object.
+ * @return {Promise<IResponse>} A promise that resolves to either an IResponse or IError object.
  */
 export const getResponse = async (parameters: IRequest): Promise<IResponse> => {
   const baseURL = '/';
@@ -65,7 +66,7 @@ export const getResponse = async (parameters: IRequest): Promise<IResponse> => {
     return {
       data,
       status: response.status,
-    } as IResponse;
+    };
   } catch (error: any) {
     return {
       data: {
