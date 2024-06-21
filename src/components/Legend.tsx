@@ -168,7 +168,7 @@ const Legend = ({ map, data }: IProps): React.JSX.Element => {
 
             {data?.bottomLogo && (
               <div className='flex flex-v-end'>
-                <img src={data.bottomLogo} width='150' alt='FIA logo' draggable='false' />
+                <img src={data.bottomLogo} width='150' alt='' draggable='false' />
               </div>
             )}
           </div>

@@ -39,7 +39,7 @@ const ThemeProvider = ({ children }: IProps): React.JSX.Element => {
     });
   };
 
-  // eslint-disable-next-line
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const providerValue = React.useMemo(() => ({ theme, changeTheme }), [theme]);
 
   return <ThemeContext.Provider value={providerValue}>{children}</ThemeContext.Provider>;

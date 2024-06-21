@@ -15,8 +15,8 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "set \"GENERATE_SOURCEMAP=false\" && react-scripts build",
-    "eslint check": "eslint ./src",
-    "prettier check": "prettier --check **"
+    "eslint": "eslint ./src",
+    "prettier": "prettier --check **"
   },
   "eslintConfig": {
     "extends": [

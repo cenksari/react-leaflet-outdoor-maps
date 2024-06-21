@@ -8,7 +8,7 @@ interface IProps {
 
 const Information = ({ name, logo }: IProps): React.JSX.Element => (
   <div className='information'>
-    {logo ? <img src={logo} width='150' alt={name} draggable='false' /> : <strong>{name}</strong>}
+    {logo ? <img src={logo} width='150' alt='' draggable='false' /> : <strong>{name}</strong>}
   </div>
 );
 
