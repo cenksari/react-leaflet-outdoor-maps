@@ -20,6 +20,6 @@ module.exports = {
   rules: {
     'prettier/prettier': 'error',
     'react/require-default-props': 'off',
-    'react/function-component-definition': 'off',
+    'react/function-component-definition': [2, { namedComponents: 'arrow-function' }],
   },
 };
