@@ -4,7 +4,11 @@ import Swipe from 'react-easy-swipe';
 // types
 import type { Map, LatLngExpression } from 'leaflet';
 import type { IData, ILocation } from '../types/types';
+
+// components
 import Categories from './Categories';
+import SearchFilter from './SearchFilter';
+import SearchForm from './SearchForm';
 
 // interfaces
 interface IProps {
@@ -13,8 +17,6 @@ interface IProps {
 }
 
 const Legend = ({ map, data }: IProps): React.JSX.Element => {
-  const inputRef = React.useRef<HTMLInputElement>(null);
-
   const [close, setClose] = React.useState<boolean>(false);
   const [keyword, setKeyword] = React.useState<string>('');
   const [filteredResults, setFilteredResults] = React.useState<ILocation[] | null>(null);
@@ -89,54 +91,14 @@ const Legend = ({ map, data }: IProps): React.JSX.Element => {
       {!close && (
         <>
           <div className='autocomplete-container'>
-            <div className='flex flex-gap-small flex-v-center search-area'>
-              <button type='button' onClick={() => inputRef.current?.focus()}>
-                <span className='material-symbols-outlined input-icon'>search</span>
-              </button>
-              <input
-                type='text'
-                id='search'
-                name='search'
-                maxLength={32}
-                ref={inputRef}
-                value={keyword}
-                onChange={handleChange}
-                placeholder='Search places...'
-              />
-              {keyword && (
-                <button
-                  type='button'
-                  className='pointer active-opacity'
-                  onClick={() => handleAutocompleterClose()}
-                >
-                  <span className='material-symbols-outlined input-icon'>close</span>
-                </button>
-              )}
-            </div>
+            <SearchForm
+              keyword={keyword}
+              handleChange={handleChange}
+              handleAutoCompleterClose={handleAutocompleterClose}
+            />
 
             {filteredResults && (
-              <div className='autocomplete scroller-vertical'>
-                {filteredResults.length > 0 ? (
-                  <ul>
-                    {filteredResults.map((item) => (
-                      <li key={item.id}>
-                        <button
-                          type='button'
-                          onClick={() => handleClickLocate(item.shape.location[0])}
-                          className='flex-space-between flex-gap flex-h-center no-select pointer active-opacity'
-                        >
-                          <span className='material-symbols-outlined'>{item.category.icon}</span>
-                          <span className='flex flex-grow flex-self'>{item.title}</span>
-                          <span className='material-symbols-outlined'>center_focus_weak</span>
-                          <em>Show</em>
-                        </button>
-                      </li>
-                    ))}
-                  </ul>
-                ) : (
-                  <p>No results found!</p>
-                )}
-              </div>
+              <SearchFilter data={filteredResults} handleClickLocate={handleClickLocate} />
             )}
           </div>
 
