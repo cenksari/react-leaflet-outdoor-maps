@@ -1,5 +1,10 @@
 import type { LatLngExpression, LatLngBoundsExpression } from 'leaflet';
 
+export interface IPosition {
+  lat: number;
+  lng: number;
+}
+
 export interface ILegend {
   id: number;
   name: string;

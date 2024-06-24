@@ -1,8 +1,8 @@
 export interface IMyLocation {
   error?: string;
   status: boolean;
-  latitude?: number;
-  longitude?: number;
+  latitude: number;
+  longitude: number;
 }
 
 /**

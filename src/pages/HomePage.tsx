@@ -3,7 +3,7 @@ import React from 'react';
 import type { Map } from 'leaflet';
 
 import { useQuery } from '@tanstack/react-query';
-import { MapContainer, TileLayer } from 'react-leaflet';
+import { MapContainer, TileLayer, Circle } from 'react-leaflet';
 
 // hooks
 import useTheme from '../hooks/useTheme';
@@ -24,7 +24,7 @@ import LocationButton from '../components/LocationButton';
 
 // types
 import Geo, { type IMyLocation } from '../utils/Geo';
-import type { IData, ILocation } from '../types/types';
+import type { IData, ILocation, IPosition } from '../types/types';
 
 // utils
 import { getResponse } from '../utils/Request';
@@ -33,7 +33,7 @@ const HomePage = (): React.JSX.Element => {
   const { theme, changeTheme } = useTheme();
 
   const [mapRef, setMapRef] = React.useState<Map | null>(null);
-  const [myLocation, setMyLocation] = React.useState<IMyLocation | null>(null);
+  const [myLocation, setMyLocation] = React.useState<IPosition | null>(null);
 
   const { data, error, isError, isLoading } = useQuery({
     queryKey: ['data'],
@@ -58,6 +58,23 @@ const HomePage = (): React.JSX.Element => {
   };
 
   /**
+   * Subscribes to the user's location updates and updates the state with the new location.
+   *
+   * @return {void} This function does not return anything.
+   */
+  const subscribeLocation = (): void => {
+    navigator.geolocation.watchPosition(
+      (pos) => {
+        setMyLocation({ lat: pos.coords.latitude, lng: pos.coords.longitude });
+      },
+      () => {
+        setMyLocation(null);
+      },
+      { enableHighAccuracy: true }
+    );
+  };
+
+  /**
    * Retrieves the user's current location and updates the state with the result.
    *
    * @return {Promise<void>} A promise that resolves when the location is retrieved and the state is updated.
@@ -66,7 +83,7 @@ const HomePage = (): React.JSX.Element => {
     const ll: IMyLocation = await Geo.getUserLocation();
 
     if (ll !== null && ll.status) {
-      setMyLocation(ll);
+      subscribeLocation();
     } else {
       setMyLocation(null);
     }
@@ -78,22 +95,20 @@ const HomePage = (): React.JSX.Element => {
     } else {
       import('../styles/circuit-light.css');
     }
-
-    document.addEventListener('contextmenu', preventClick);
-
-    return () => document.removeEventListener('contextmenu', preventClick);
   }, [theme]);
 
   React.useEffect(() => {
     const runAsync = async () => {
       const geoPermissions = await Geo.checkPermission();
 
-      if (geoPermissions) {
-        await getMyLocation();
-      }
+      if (geoPermissions) subscribeLocation();
     };
 
     runAsync();
+
+    document.addEventListener('contextmenu', preventClick);
+
+    return () => document.removeEventListener('contextmenu', preventClick);
   }, []);
 
   /**
@@ -121,11 +136,11 @@ const HomePage = (): React.JSX.Element => {
     <>
       <Information name={data.name} logo={data.topLogo} />
 
-      <CenterButton map={mapRef} zoomLevel={data.defaultZoom} centerCoords={data.centerCoords} />
+      <ThemeButton theme={theme} onChangeTheme={changeAppTheme} />
 
       <LocationButton show={!myLocation} onSetLocation={getMyLocation} />
 
-      <ThemeButton theme={theme} onChangeTheme={changeAppTheme} />
+      <CenterButton map={mapRef} zoomLevel={data.defaultZoom} centerCoords={data.centerCoords} />
 
       <MapContainer
         minZoom={15}
@@ -137,6 +152,13 @@ const HomePage = (): React.JSX.Element => {
       >
         <TileLayer url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png' />
         {data.locations?.map((loc: ILocation) => <MapLocation key={loc.id} location={loc} />)}
+        {myLocation && (
+          <Circle
+            radius={10}
+            center={[myLocation.lat, myLocation.lng]}
+            pathOptions={{ color: 'blue', fillColor: 'blue', stroke: true }}
+          />
+        )}
       </MapContainer>
 
       <Legend map={mapRef} data={data} />
