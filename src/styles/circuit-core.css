@@ -355,14 +355,27 @@ strong,
   transition: all 1s ease;
 }
 
+.location-button {
+  top: 160px;
+  left: 12px;
+  width: 29px;
+  height: 29px;
+  z-index: 999999;
+  position: absolute;
+  border-radius: 2px;
+  transition: all 1s ease;
+}
+
 .theme-button,
-.center-button {
+.center-button,
+.location-button {
   background-color: #ffffff;
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.65);
 }
 
 .theme-button span,
-.center-button span {
+.center-button span,
+.location-button span {
   font-size: 1.1em;
 }
 

@@ -20,8 +20,10 @@ import MapLocation from '../components/MapLocation';
 import Information from '../components/Information';
 import ThemeButton from '../components/ThemeButton';
 import CenterButton from '../components/CenterButton';
+import LocationButton from '../components/LocationButton';
 
 // types
+import Geo, { type IMyLocation } from '../utils/Geo';
 import type { IData, ILocation } from '../types/types';
 
 // utils
@@ -31,6 +33,7 @@ const HomePage = (): React.JSX.Element => {
   const { theme, changeTheme } = useTheme();
 
   const [mapRef, setMapRef] = React.useState<Map | null>(null);
+  const [myLocation, setMyLocation] = React.useState<IMyLocation | null>(null);
 
   const { data, error, isError, isLoading } = useQuery({
     queryKey: ['data'],
@@ -54,6 +57,21 @@ const HomePage = (): React.JSX.Element => {
     e.preventDefault();
   };
 
+  /**
+   * Retrieves the user's current location and updates the state with the result.
+   *
+   * @return {Promise<void>} A promise that resolves when the location is retrieved and the state is updated.
+   */
+  const getMyLocation = async (): Promise<void> => {
+    const ll: IMyLocation = await Geo.getUserLocation();
+
+    if (ll !== null && ll.status) {
+      setMyLocation(ll);
+    } else {
+      setMyLocation(null);
+    }
+  };
+
   React.useEffect(() => {
     if (theme === 'dark') {
       import('../styles/circuit-dark.css');
@@ -65,6 +83,18 @@ const HomePage = (): React.JSX.Element => {
 
     return () => document.removeEventListener('contextmenu', preventClick);
   }, [theme]);
+
+  React.useEffect(() => {
+    const runAsync = async () => {
+      const geoPermissions = await Geo.checkPermission();
+
+      if (geoPermissions) {
+        await getMyLocation();
+      }
+    };
+
+    runAsync();
+  }, []);
 
   /**
    * Change the application theme based on the current theme.
@@ -92,6 +122,8 @@ const HomePage = (): React.JSX.Element => {
       <Information name={data.name} logo={data.topLogo} />
 
       <CenterButton map={mapRef} zoomLevel={data.defaultZoom} centerCoords={data.centerCoords} />
+
+      <LocationButton show={!myLocation} onSetLocation={getMyLocation} />
 
       <ThemeButton theme={theme} onChangeTheme={changeAppTheme} />
 

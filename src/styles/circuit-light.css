@@ -73,7 +73,8 @@ body {
 }
 
 .theme-button,
-.center-button {
+.center-button,
+.location-button {
   background-color: #ffffff;
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.65);
 }
@@ -81,7 +82,9 @@ body {
 .theme-button:hover,
 .theme-button:active,
 .center-button:hover,
-.center-button:active {
+.center-button:active,
+.location-button:hover,
+.location-button:active {
   background-color: #f5f5f5;
 }
 
