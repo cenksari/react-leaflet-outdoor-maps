@@ -1,6 +1,8 @@
 import React from 'react';
 
 import type { Map } from 'leaflet';
+
+import { useQuery } from '@tanstack/react-query';
 import { MapContainer, TileLayer } from 'react-leaflet';
 
 // hooks
@@ -20,17 +22,27 @@ import ThemeButton from '../components/ThemeButton';
 import CenterButton from '../components/CenterButton';
 
 // types
-import type { IData } from '../types/types';
+import type { IData, ILocation } from '../types/types';
 
 // utils
-import { getResponse, type IRequest } from '../utils/Request';
+import { getResponse } from '../utils/Request';
 
 const HomePage = (): React.JSX.Element => {
   const { theme, changeTheme } = useTheme();
 
-  const [loading, setLoading] = React.useState<boolean>(true);
-  const [mapData, setMapData] = React.useState<IData | null>(null);
-  const [mapRefer, setMapRefer] = React.useState<Map | null>(null);
+  const [mapRef, setMapRef] = React.useState<Map | null>(null);
+
+  const { data, error, isError, isLoading } = useQuery({
+    queryKey: ['data'],
+    queryFn: async () => {
+      const response = await getResponse({ url: 'data.json', method: 'GET' });
+
+      if (response.status === 200) return response.data as IData;
+
+      throw new Error(response.data.title);
+    },
+    refetchOnWindowFocus: false,
+  });
 
   /**
    * Prevents the default behavior of the mouse event.
@@ -49,23 +61,6 @@ const HomePage = (): React.JSX.Element => {
       import('../styles/circuit-light.css');
     }
 
-    const getData = async () => {
-      const parameters: IRequest = {
-        url: 'data.json',
-        method: 'GET',
-      };
-
-      const response = await getResponse(parameters);
-
-      if (response.status === 200) {
-        setMapData(response.data);
-      }
-
-      setLoading(false);
-    };
-
-    getData();
-
     document.addEventListener('contextmenu', preventClick);
 
     return () => document.removeEventListener('contextmenu', preventClick);
@@ -77,46 +72,42 @@ const HomePage = (): React.JSX.Element => {
    * @return {void} No return value
    */
   const changeAppTheme = (): void => {
-    setLoading(true);
-
     changeTheme(theme === 'light' ? 'dark' : 'light');
 
     document.location.reload();
   };
 
-  if (loading) {
-    return <Loading />;
-  }
+  if (isLoading) return <Loading />;
 
-  if (!mapData) {
-    return <ErrorPage message='No map data found! Please check your configuration settings.' />;
+  if (isError || !data) {
+    return (
+      <ErrorPage
+        message={`No map data found! Please check your configuration settings. ${error}`}
+      />
+    );
   }
 
   return (
     <>
-      <Information name={mapData.name} logo={mapData.topLogo} />
+      <Information name={data.name} logo={data.topLogo} />
 
-      <CenterButton
-        map={mapRefer}
-        zoomLevel={mapData.defaultZoom}
-        centerCoords={mapData.centerCoords}
-      />
+      <CenterButton map={mapRef} zoomLevel={data.defaultZoom} centerCoords={data.centerCoords} />
 
       <ThemeButton theme={theme} onChangeTheme={changeAppTheme} />
 
       <MapContainer
         minZoom={15}
+        ref={setMapRef}
         scrollWheelZoom
-        ref={setMapRefer}
-        zoom={mapData.defaultZoom}
-        center={mapData.centerCoords}
-        maxBounds={mapData.maxMapBounds}
+        zoom={data.defaultZoom}
+        center={data.centerCoords}
+        maxBounds={data.maxMapBounds}
       >
         <TileLayer url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png' />
-        {mapData?.locations?.map((loc) => <MapLocation key={loc.id} location={loc} />)}
+        {data.locations?.map((loc: ILocation) => <MapLocation key={loc.id} location={loc} />)}
       </MapContainer>
 
-      <Legend map={mapRefer} data={mapData} />
+      <Legend map={mapRef} data={data} />
     </>
   );
 };

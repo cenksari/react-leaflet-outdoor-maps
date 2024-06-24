@@ -26,6 +26,7 @@ const SearchForm = ({
         maxLength={32}
         ref={inputRef}
         value={keyword}
+        autoComplete='off'
         onChange={handleChange}
         placeholder='Search places...'
       />
