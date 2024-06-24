@@ -70,7 +70,11 @@ const HomePage = (): React.JSX.Element => {
       () => {
         setMyLocation(null);
       },
-      { enableHighAccuracy: true }
+      {
+        timeout: 5000,
+        maximumAge: 20000,
+        enableHighAccuracy: true,
+      }
     );
   };
 
