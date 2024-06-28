@@ -56,7 +56,7 @@ const Loading = (): React.JSX.Element => (
         </circle>
       </g>
     </svg>
-    <strong>Loading map...</strong>
+    <strong>Loading map data...</strong>
   </div>
 );
 
