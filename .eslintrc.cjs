@@ -20,6 +20,7 @@ module.exports = {
     'react/require-default-props': 'off',
     'react/function-component-definition': [2, { namedComponents: 'arrow-function' }],
     '@tanstack/query/exhaustive-deps': 'error',
+    '@tanstack/query/no-rest-destructuring': 'warn',
     '@tanstack/query/stable-query-client': 'error',
   },
 };
