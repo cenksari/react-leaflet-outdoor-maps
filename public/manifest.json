@@ -1,6 +1,6 @@
 {
-  "short_name": "Racepro Circuit Map",
-  "name": "Racepro Circuit Map App",
+  "short_name": "React Leaflet Outdoor Maps",
+  "name": "React Leaflet Outdoor Maps",
   "icons": [
     {
       "src": "favicon.ico",
