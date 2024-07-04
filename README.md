@@ -17,7 +17,7 @@ If you like this resource, please follow me on GitHub. Thank you!
 
 ## Demo
 
-[https://circuit-map.vercel.app/](https://circuit-map.vercel.app/)
+[https://react-leaflet-outdoor-maps.vercel.app/](https://react-leaflet-outdoor-maps.vercel.app/)
 
 ## Screenshots
 
