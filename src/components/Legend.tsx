@@ -7,8 +7,8 @@ import type { IData, ILocation } from '../types/types';
 
 // components
 import Categories from './Categories';
-import SearchFilter from './SearchFilter';
 import SearchForm from './SearchForm';
+import SearchFilter from './SearchFilter';
 
 // interfaces
 interface IProps {

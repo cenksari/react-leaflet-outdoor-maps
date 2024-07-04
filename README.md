@@ -48,6 +48,7 @@ If you like this resource, please follow me on GitHub. Thank you!
    ```bash
    npm install
    ```
+
    or
 
    ```bash
