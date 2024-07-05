@@ -1,11 +1,11 @@
 import React from 'react';
-import Swipe from 'react-easy-swipe';
 
 // types
 import type { Map, LatLngExpression } from 'leaflet';
 import type { IData, ILocation } from '../types/types';
 
 // components
+import Swiper from './Swiper';
 import Categories from './Categories';
 import SearchForm from './SearchForm';
 import SearchFilter from './SearchFilter';
@@ -74,19 +74,19 @@ const Legend = ({ map, data }: IProps): React.JSX.Element => {
     map?.setView(coords, 18);
   };
 
+  /**
+   * Updates the state of the component to reflect a collapse or expand action.
+   *
+   * @param {boolean} collapse - A boolean indicating whether to collapse or expand the component.
+   * @return {void} This function does not return anything.
+   */
+  const onCollapse = (collapse: boolean): void => {
+    setClose(collapse);
+  };
+
   return (
     <div className='legend'>
-      <Swipe onSwipeUp={() => setClose(false)} onSwipeDown={() => setClose(true)}>
-        <div className='swiper' />
-        <div className='flex flex-space-between flex-v-center legend-header'>
-          <h5>Legend & Search</h5>
-          <button type='button' onClick={() => setClose(!close)}>
-            <span className='material-symbols-outlined down-icon pointer active-opacity'>
-              {close ? 'expand_less' : 'expand_more'}
-            </span>
-          </button>
-        </div>
-      </Swipe>
+      <Swiper close={close} onCollapse={onCollapse} />
 
       {!close && (
         <>
