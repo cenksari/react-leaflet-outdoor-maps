@@ -38,7 +38,7 @@
     ]
   },
   "devDependencies": {
-    "@tanstack/eslint-plugin-query": "^5.51.9",
+    "@tanstack/eslint-plugin-query": "^5.51.10",
     "@types/leaflet": "^1.9.12",
     "@types/node": "^20.14.11",
     "@types/react": "^18.3.3",
