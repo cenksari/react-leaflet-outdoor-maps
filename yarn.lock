@@ -1844,24 +1844,24 @@
     "@svgr/plugin-svgo" "^5.5.0"
     loader-utils "^2.0.0"
 
-"@tanstack/eslint-plugin-query@^5.51.13":
-  version "5.51.13"
-  resolved "https://registry.yarnpkg.com/@tanstack/eslint-plugin-query/-/eslint-plugin-query-5.51.13.tgz#ef5aa89e5e412805940ee2e9a8a2fcdeaa8004d5"
-  integrity sha512-5Xe+Ye0rEwPTQ8EMv76LWbGX4m2P3ipUl2+NYWYN9z8fafEhqI5d/1JK1C+FYY7YUnqo8WvBL7E0f7jfy3XTvw==
+"@tanstack/eslint-plugin-query@^5.51.14":
+  version "5.51.14"
+  resolved "https://registry.yarnpkg.com/@tanstack/eslint-plugin-query/-/eslint-plugin-query-5.51.14.tgz#6b0067a2cea4f449403993e483b591147e824d62"
+  integrity sha512-8NskxZ/OVlIhUGKAe7pqBS7U9KQUQYevS6GfbN76mtDtiDlEkUCATN0s5loZfXsFswazdVcBorTx1ndTDrBwMw==
   dependencies:
     "@typescript-eslint/utils" "8.0.0-alpha.30"
 
-"@tanstack/query-core@5.51.9":
-  version "5.51.9"
-  resolved "https://registry.yarnpkg.com/@tanstack/query-core/-/query-core-5.51.9.tgz#eb2e02c715068d5664680b773e39eb44db6b48d8"
-  integrity sha512-HsAwaY5J19MD18ykZDS3aVVh+bAt0i7m6uQlFC2b77DLV9djo+xEN7MWQAQQTR8IM+7r/zbozTQ7P0xr0bHuew==
+"@tanstack/query-core@5.51.14":
+  version "5.51.14"
+  resolved "https://registry.yarnpkg.com/@tanstack/query-core/-/query-core-5.51.14.tgz#cba2e34f0bfad92062d48793523812fc7bc9f35c"
+  integrity sha512-4k4QEqs4WX7A6IgYpUpLbIj4uIWiUGO9pVAJ0C3TxsY7rVhBSoU6od4MeXZSTljC8XDhLrD8BHqHJDJTsoPjxQ==
 
-"@tanstack/react-query@^5.51.11":
-  version "5.51.11"
-  resolved "https://registry.yarnpkg.com/@tanstack/react-query/-/react-query-5.51.11.tgz#8ab2cf6a4baa7a99b5682addf31328525f43242c"
-  integrity sha512-4Kq2x0XpDlpvSnaLG+8pHNH60zEc3mBvb3B2tOMDjcPCi/o+Du3p/9qpPLwJOTliVxxPJAP27fuIhLrsRdCr7A==
+"@tanstack/react-query@^5.51.14":
+  version "5.51.14"
+  resolved "https://registry.yarnpkg.com/@tanstack/react-query/-/react-query-5.51.14.tgz#2eea813f05ef04c240845757f2b4d305946dd427"
+  integrity sha512-ahekMR8D9dDVmVfSZmWQ8WJrGxMsuz+mDzUKLAfzBPeyxFUf2giWKuXu8XCm3PJUoEHZWta/I1Qd+YiHLiiW1Q==
   dependencies:
-    "@tanstack/query-core" "5.51.9"
+    "@tanstack/query-core" "5.51.14"
 
 "@tootallnate/once@1":
   version "1.1.2"
