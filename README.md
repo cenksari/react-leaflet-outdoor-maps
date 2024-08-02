@@ -8,15 +8,15 @@ Embark on a journey to create stunning outdoor maps with React Leaflet, the ulti
 
 With React Leaflet Outdoor Maps, you can:
 
-* Design captivating maps with a variety of shapes, including polygons, circles, rectangles, and polylines.
-* Pinpoint locations with markers, popups, and tooltips, making it easy to navigate and discover new places.
-* Generate searchable locations, allowing users to find their desired destinations with ease.
-* Create event maps for any area in the world, perfect for festivals, concerts, or sporting events.
-* Search and center categorized areas, ensuring users can focus on the most relevant information.
-* Define map boundaries, preventing navigation outside designated areas and ensuring a seamless user experience.
-* Add event and organizer logos, personalizing the map to your brand or event.
-* Enjoy a seamless experience on mobile devices, ensuring your maps are accessible anywhere, anytime.
-* Switch between light and dark modes, catering to user preferences and enhancing readability.
+- Design captivating maps with a variety of shapes, including polygons, circles, rectangles, and polylines.
+- Pinpoint locations with markers, popups, and tooltips, making it easy to navigate and discover new places.
+- Generate searchable locations, allowing users to find their desired destinations with ease.
+- Create event maps for any area in the world, perfect for festivals, concerts, or sporting events.
+- Search and center categorized areas, ensuring users can focus on the most relevant information.
+- Define map boundaries, preventing navigation outside designated areas and ensuring a seamless user experience.
+- Add event and organizer logos, personalizing the map to your brand or event.
+- Enjoy a seamless experience on mobile devices, ensuring your maps are accessible anywhere, anytime.
+- Switch between light and dark modes, catering to user preferences and enhancing readability.
 
 **Get Started Today**
 

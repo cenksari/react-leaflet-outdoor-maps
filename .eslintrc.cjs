@@ -18,9 +18,11 @@ module.exports = {
   rules: {
     'prettier/prettier': 'error',
     'react/require-default-props': 'off',
-    'react/function-component-definition': [2, { namedComponents: 'arrow-function' }],
     '@tanstack/query/exhaustive-deps': 'error',
-    '@tanstack/query/no-rest-destructuring': 'warn',
+    '@typescript-eslint/no-throw-literal': 'off',
     '@tanstack/query/stable-query-client': 'error',
+    '@tanstack/query/no-rest-destructuring': 'warn',
+    '@typescript-eslint/lines-between-class-members': 'off',
+    'react/function-component-definition': [2, { namedComponents: 'arrow-function' }],
   },
 };
