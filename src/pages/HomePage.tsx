@@ -1,4 +1,4 @@
-import React from 'react';
+import { useState, useEffect } from 'react';
 
 import type { Map } from 'leaflet';
 
@@ -29,11 +29,11 @@ import type { IData, ILocation, IPosition } from '../types/types';
 // utils
 import { getResponse } from '../utils/Request';
 
-const HomePage = (): React.JSX.Element => {
+const HomePage = (): JSX.Element => {
   const { theme, changeTheme } = useTheme();
 
-  const [mapRef, setMapRef] = React.useState<Map | null>(null);
-  const [myLocation, setMyLocation] = React.useState<IPosition | null>(null);
+  const [mapRef, setMapRef] = useState<Map | null>(null);
+  const [myLocation, setMyLocation] = useState<IPosition | null>(null);
 
   const { data, error, isError, isLoading } = useQuery({
     queryKey: ['data'],
@@ -93,7 +93,7 @@ const HomePage = (): React.JSX.Element => {
     }
   };
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (theme === 'dark') {
       import('../styles/circuit-dark.css');
     } else {
@@ -101,7 +101,7 @@ const HomePage = (): React.JSX.Element => {
     }
   }, [theme]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     const runAsync = async () => {
       const geoPermissions = await Geo.checkPermission();
 

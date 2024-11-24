@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Loading = (): React.JSX.Element => (
+const Loading = (): JSX.Element => (
   <div className='flex flex-h-center flex-v-center full-h'>
     <svg
       width='44'

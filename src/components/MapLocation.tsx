@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { LatLngBoundsExpression } from 'leaflet';
 import { Popup, Tooltip, Circle, Polygon, Rectangle, Polyline, Marker } from 'react-leaflet';
 
@@ -11,7 +9,7 @@ interface IProps {
   location: ILocation;
 }
 
-const MapLocation = ({ location }: IProps): React.JSX.Element | null => {
+const MapLocation = ({ location }: IProps): JSX.Element | null => {
   if (location.shape.type === 'polygon') {
     return (
       <Polygon

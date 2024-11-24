@@ -1,4 +1,4 @@
-import React from 'react';
+import { useState, useCallback } from 'react';
 
 // types
 import type { Map, LatLngExpression } from 'leaflet';
@@ -16,10 +16,10 @@ interface IProps {
   data: IData | null;
 }
 
-const Legend = ({ map, data }: IProps): React.JSX.Element => {
-  const [close, setClose] = React.useState<boolean>(false);
-  const [keyword, setKeyword] = React.useState<string>('');
-  const [filteredResults, setFilteredResults] = React.useState<ILocation[] | null>(null);
+const Legend = ({ map, data }: IProps): JSX.Element => {
+  const [close, setClose] = useState<boolean>(false);
+  const [keyword, setKeyword] = useState<string>('');
+  const [filteredResults, setFilteredResults] = useState<ILocation[] | null>(null);
 
   /**
    * Handles the change event of the input field.
@@ -27,7 +27,7 @@ const Legend = ({ map, data }: IProps): React.JSX.Element => {
    * @param {React.ChangeEvent<HTMLInputElement>} e - The event object representing the input change.
    * @return {void} This function does not return anything.
    */
-  const handleChange = React.useCallback(
+  const handleChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>): void => {
       const searchKeyword = e.target.value;
 

@@ -1,12 +1,10 @@
-import React from 'react';
-
 // interfaces
 interface IProps {
   theme: string;
   onChangeTheme: () => void;
 }
 
-const ThemeButton = ({ theme, onChangeTheme }: IProps): React.JSX.Element => (
+const ThemeButton = ({ theme, onChangeTheme }: IProps): JSX.Element => (
   <div className='theme-button flex flex-v-center flex-h-center'>
     <button
       type='button'

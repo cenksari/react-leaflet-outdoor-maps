@@ -1,4 +1,4 @@
-import React from 'react';
+import { useCallback } from 'react';
 
 import type { Map, LatLngExpression } from 'leaflet';
 
@@ -9,8 +9,8 @@ interface IProps {
   centerCoords: LatLngExpression;
 }
 
-const CenterButton = ({ map, zoomLevel, centerCoords }: IProps): React.JSX.Element => {
-  const onClick = React.useCallback((): void => {
+const CenterButton = ({ map, zoomLevel, centerCoords }: IProps): JSX.Element => {
+  const onClick = useCallback((): void => {
     map?.setView(centerCoords, zoomLevel);
   }, [map, zoomLevel, centerCoords]);
 

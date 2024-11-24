@@ -1,12 +1,10 @@
-import React from 'react';
-
 // interfaces
 interface IProps {
   show: boolean;
   onSetLocation: () => void;
 }
 
-const LocationButton = ({ show, onSetLocation }: IProps): React.JSX.Element | null => {
+const LocationButton = ({ show, onSetLocation }: IProps): JSX.Element | null => {
   if (show) {
     return (
       <div className='location-button flex flex-v-center flex-h-center'>

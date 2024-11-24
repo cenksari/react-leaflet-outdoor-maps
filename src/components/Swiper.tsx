@@ -1,4 +1,3 @@
-import React from 'react';
 import Swipe from 'react-easy-swipe';
 
 interface IProps {
@@ -6,7 +5,7 @@ interface IProps {
   onCollapse: (collapse: boolean) => void;
 }
 
-const Swiper = ({ close, onCollapse }: IProps): React.JSX.Element => (
+const Swiper = ({ close, onCollapse }: IProps): JSX.Element => (
   <Swipe onSwipeUp={() => onCollapse(false)} onSwipeDown={() => onCollapse(true)}>
     <div className='swiper' />
     <div className='flex flex-space-between flex-v-center legend-header'>

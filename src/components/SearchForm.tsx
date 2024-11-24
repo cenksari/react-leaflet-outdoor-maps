@@ -1,4 +1,4 @@
-import React from 'react';
+import { useRef } from 'react';
 
 // interfaces
 interface IProps {
@@ -7,12 +7,8 @@ interface IProps {
   handleAutoCompleterClose: () => void;
 }
 
-const SearchForm = ({
-  keyword,
-  handleChange,
-  handleAutoCompleterClose,
-}: IProps): React.JSX.Element => {
-  const inputRef = React.useRef<HTMLInputElement>(null);
+const SearchForm = ({ keyword, handleChange, handleAutoCompleterClose }: IProps): JSX.Element => {
+  const inputRef = useRef<HTMLInputElement>(null);
 
   return (
     <div className='flex flex-gap-small flex-v-center search-area'>

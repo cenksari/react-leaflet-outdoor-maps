@@ -1,4 +1,4 @@
-import React from 'react';
+import { useMemo, useState, useEffect } from 'react';
 
 import { initialState, ThemeContext } from '../contexts/ThemeContext';
 
@@ -14,12 +14,12 @@ interface IProps {
   children: React.ReactNode;
 }
 
-const ThemeProvider = ({ children }: IProps): React.JSX.Element => {
+const ThemeProvider = ({ children }: IProps): JSX.Element => {
   const { getData, setData } = useLocalStorage();
 
-  const [theme, setTheme] = React.useState<string>(initialState.theme);
+  const [theme, setTheme] = useState<string>(initialState.theme);
 
-  React.useEffect(() => {
+  useEffect(() => {
     const getTheme = getData<ITheme>('theme');
 
     if (getTheme) setTheme(getTheme.theme);
@@ -40,7 +40,7 @@ const ThemeProvider = ({ children }: IProps): React.JSX.Element => {
   };
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  const providerValue = React.useMemo(() => ({ theme, changeTheme }), [theme]);
+  const providerValue = useMemo(() => ({ theme, changeTheme }), [theme]);
 
   return <ThemeContext.Provider value={providerValue}>{children}</ThemeContext.Provider>;
 };

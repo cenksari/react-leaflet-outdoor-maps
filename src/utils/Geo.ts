@@ -1,3 +1,4 @@
+// interfaces
 export interface IMyLocation {
   error?: string;
   status: boolean;

@@ -1,4 +1,4 @@
-import React from 'react';
+import { createContext } from 'react';
 
 export interface IThemeContext {
   theme: string;
@@ -10,4 +10,4 @@ export const initialState: IThemeContext = {
   changeTheme: () => {},
 };
 
-export const ThemeContext = React.createContext<IThemeContext>(initialState);
+export const ThemeContext = createContext<IThemeContext>(initialState);

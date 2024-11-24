@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { LatLngExpression } from 'leaflet';
 
 // types
@@ -11,7 +9,7 @@ interface IProps {
   handleClickLocate: (coords: LatLngExpression) => void;
 }
 
-const SearchFilter = ({ data, handleClickLocate }: IProps): React.JSX.Element => {
+const SearchFilter = ({ data, handleClickLocate }: IProps): JSX.Element => {
   return (
     <div className='autocomplete scroller-vertical'>
       {data.length > 0 ? (

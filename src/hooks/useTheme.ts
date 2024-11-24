@@ -1,4 +1,4 @@
-import React from 'react';
+import { useContext } from 'react';
 
 import { ThemeContext, type IThemeContext } from '../contexts/ThemeContext';
 
@@ -8,7 +8,7 @@ import { ThemeContext, type IThemeContext } from '../contexts/ThemeContext';
  * @return {IThemeContext} An object containing the current theme and a function to change the theme.
  */
 const useTheme = (): IThemeContext => {
-  const { theme, changeTheme } = React.useContext(ThemeContext) as IThemeContext;
+  const { theme, changeTheme } = useContext(ThemeContext) as IThemeContext;
 
   return { theme, changeTheme };
 };
