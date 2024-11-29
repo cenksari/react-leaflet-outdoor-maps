@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@tanstack/react-query": "^5.61.3",
+    "@tanstack/react-query": "^5.61.5",
     "leaflet": "^1.9.4",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
@@ -38,14 +38,14 @@
     ]
   },
   "devDependencies": {
-    "@tanstack/eslint-plugin-query": "^5.61.3",
+    "@tanstack/eslint-plugin-query": "^5.61.6",
     "@types/leaflet": "^1.9.14",
-    "@types/node": "^22.9.3",
+    "@types/node": "^22.10.1",
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",
     "@types/react-leaflet": "^3.0.0",
-    "@typescript-eslint/eslint-plugin": "^8.15.0",
-    "@typescript-eslint/parser": "^8.15.0",
+    "@typescript-eslint/eslint-plugin": "^8.16.0",
+    "@typescript-eslint/parser": "^8.16.0",
     "eslint": "^9.15.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-config-react-app": "^7.0.1",
@@ -54,7 +54,7 @@
     "eslint-plugin-prettier": "^5.2.1",
     "eslint-plugin-react": "^7.37.2",
     "eslint-plugin-react-hooks": "^5.0.0",
-    "prettier": "^3.3.3",
-    "typescript-eslint": "^8.15.0"
+    "prettier": "^3.4.1",
+    "typescript-eslint": "^8.16.0"
   }
 }
