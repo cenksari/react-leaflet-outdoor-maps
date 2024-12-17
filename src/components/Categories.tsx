@@ -7,7 +7,7 @@ interface IProps {
   data: IData | null;
 }
 
-const Categories = ({ data }: IProps): JSX.Element => {
+const Categories: React.FC<IProps> = ({ data }) => {
   /**
    * Returns the count of items belonging to a specific category.
    *

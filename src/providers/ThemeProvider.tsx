@@ -14,7 +14,7 @@ interface IProps {
   children: React.ReactNode;
 }
 
-const ThemeProvider = ({ children }: IProps): JSX.Element => {
+const ThemeProvider: React.FC<IProps> = ({ children }) => {
   const { getData, setData } = useLocalStorage();
 
   const [theme, setTheme] = useState<string>(initialState.theme);

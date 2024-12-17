@@ -4,7 +4,7 @@ interface IProps {
   logo?: string;
 }
 
-const Information = ({ name, logo }: IProps): JSX.Element => (
+const Information: React.FC<IProps> = ({ name, logo }) => (
   <div className='information'>
     {logo ? <img src={logo} width='150' alt='' draggable='false' /> : <strong>{name}</strong>}
   </div>

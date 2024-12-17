@@ -9,7 +9,7 @@ interface IProps {
   handleClickLocate: (coords: LatLngExpression) => void;
 }
 
-const SearchFilter = ({ data, handleClickLocate }: IProps): JSX.Element => {
+const SearchFilter: React.FC<IProps> = ({ data, handleClickLocate }) => {
   return (
     <div className='autocomplete scroller-vertical'>
       {data.length > 0 ? (

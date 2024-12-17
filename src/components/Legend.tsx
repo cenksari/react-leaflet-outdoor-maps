@@ -16,7 +16,7 @@ interface IProps {
   data: IData | null;
 }
 
-const Legend = ({ map, data }: IProps): JSX.Element => {
+const Legend: React.FC<IProps> = ({ map, data }) => {
   const [close, setClose] = useState<boolean>(false);
   const [keyword, setKeyword] = useState<string>('');
   const [filteredResults, setFilteredResults] = useState<ILocation[] | null>(null);

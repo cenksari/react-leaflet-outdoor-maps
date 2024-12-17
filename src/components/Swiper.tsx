@@ -5,7 +5,7 @@ interface IProps {
   onCollapse: (collapse: boolean) => void;
 }
 
-const Swiper = ({ close, onCollapse }: IProps): JSX.Element => (
+const Swiper: React.FC<IProps> = ({ close, onCollapse }) => (
   <Swipe onSwipeUp={() => onCollapse(false)} onSwipeDown={() => onCollapse(true)}>
     <div className='swiper' />
     <div className='flex flex-space-between flex-v-center legend-header'>

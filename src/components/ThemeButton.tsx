@@ -4,7 +4,7 @@ interface IProps {
   onChangeTheme: () => void;
 }
 
-const ThemeButton = ({ theme, onChangeTheme }: IProps): JSX.Element => (
+const ThemeButton: React.FC<IProps> = ({ theme, onChangeTheme }) => (
   <div className='theme-button flex flex-v-center flex-h-center'>
     <button
       type='button'

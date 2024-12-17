@@ -7,7 +7,7 @@ interface IProps {
   handleAutoCompleterClose: () => void;
 }
 
-const SearchForm = ({ keyword, handleChange, handleAutoCompleterClose }: IProps): JSX.Element => {
+const SearchForm: React.FC<IProps> = ({ keyword, handleChange, handleAutoCompleterClose }) => {
   const inputRef = useRef<HTMLInputElement>(null);
 
   return (

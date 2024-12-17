@@ -1,4 +1,4 @@
-const Loading = (): JSX.Element => (
+const Loading: React.FC = () => (
   <div className='flex flex-h-center flex-v-center full-h'>
     <svg
       width='44'

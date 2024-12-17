@@ -4,7 +4,7 @@ interface IProps {
   onSetLocation: () => void;
 }
 
-const LocationButton = ({ show, onSetLocation }: IProps): JSX.Element | null => {
+const LocationButton: React.FC<IProps> = ({ show, onSetLocation }) => {
   if (show) {
     return (
       <div className='location-button flex flex-v-center flex-h-center'>

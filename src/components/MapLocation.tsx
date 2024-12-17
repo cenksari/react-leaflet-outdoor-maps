@@ -9,7 +9,7 @@ interface IProps {
   location: ILocation;
 }
 
-const MapLocation = ({ location }: IProps): JSX.Element | null => {
+const MapLocation: React.FC<IProps> = ({ location }) => {
   if (location.shape.type === 'polygon') {
     return (
       <Polygon

@@ -9,7 +9,7 @@ interface IProps {
   centerCoords: LatLngExpression;
 }
 
-const CenterButton = ({ map, zoomLevel, centerCoords }: IProps): JSX.Element => {
+const CenterButton: React.FC<IProps> = ({ map, zoomLevel, centerCoords }) => {
   const onClick = useCallback((): void => {
     map?.setView(centerCoords, zoomLevel);
   }, [map, zoomLevel, centerCoords]);

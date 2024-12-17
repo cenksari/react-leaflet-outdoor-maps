@@ -29,7 +29,7 @@ import type { IData, ILocation, IPosition } from '../types/types';
 // utils
 import { getResponse } from '../utils/Request';
 
-const HomePage = (): JSX.Element => {
+const HomePage: React.FC = () => {
   const { theme, changeTheme } = useTheme();
 
   const [mapRef, setMapRef] = useState<Map | null>(null);
