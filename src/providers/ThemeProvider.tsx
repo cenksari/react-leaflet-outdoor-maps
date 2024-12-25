@@ -1,4 +1,4 @@
-import { useMemo, useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
 import { initialState, ThemeContext } from '../contexts/ThemeContext';
 
@@ -39,10 +39,7 @@ const ThemeProvider: React.FC<IProps> = ({ children }) => {
     });
   };
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  const providerValue = useMemo(() => ({ theme, changeTheme }), [theme]);
-
-  return <ThemeContext.Provider value={providerValue}>{children}</ThemeContext.Provider>;
+  return <ThemeContext value={{ theme, changeTheme }}>{children}</ThemeContext>;
 };
 
 export default ThemeProvider;

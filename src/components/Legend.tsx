@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react';
+import { useState } from 'react';
 
 // types
 import type { Map, LatLngExpression } from 'leaflet';
@@ -27,30 +27,27 @@ const Legend: React.FC<IProps> = ({ map, data }) => {
    * @param {React.ChangeEvent<HTMLInputElement>} e - The event object representing the input change.
    * @return {void} This function does not return anything.
    */
-  const handleChange = useCallback(
-    (e: React.ChangeEvent<HTMLInputElement>): void => {
-      const searchKeyword = e.target.value;
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
+    const searchKeyword = e.target.value;
 
-      if (searchKeyword != null && searchKeyword?.trim().length > 0) {
-        setKeyword(searchKeyword);
+    if (searchKeyword != null && searchKeyword?.trim().length > 0) {
+      setKeyword(searchKeyword);
 
-        const results = data?.locations?.filter((s) =>
-          s.title.toLocaleLowerCase('tr-TR').includes(searchKeyword.toLocaleLowerCase('tr-TR'))
-        );
+      const results = data?.locations?.filter((s) =>
+        s.title.toLocaleLowerCase('tr-TR').includes(searchKeyword.toLocaleLowerCase('tr-TR'))
+      );
 
-        if (!results) {
-          setFilteredResults(null);
-        } else {
-          setClose(false);
-          setFilteredResults(results);
-        }
-      } else {
-        setKeyword('');
+      if (!results) {
         setFilteredResults(null);
+      } else {
+        setClose(false);
+        setFilteredResults(results);
       }
-    },
-    [data]
-  );
+    } else {
+      setKeyword('');
+      setFilteredResults(null);
+    }
+  };
 
   /**
    * Handles the close event of the autocompleter.

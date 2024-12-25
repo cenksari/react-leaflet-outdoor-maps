@@ -1,5 +1,3 @@
-import { useCallback } from 'react';
-
 import type { IData } from '../types/types';
 
 // interfaces
@@ -14,14 +12,11 @@ const Categories: React.FC<IProps> = ({ data }) => {
    * @param {number} categoryId - The ID of the category.
    * @return {string} The count of items as a string, or '0' if no items are found.
    */
-  const countItems = useCallback(
-    (categoryId: number): string => {
-      const count = data?.locations?.filter((l) => l.category.id === categoryId).length || 0;
+  const countItems = (categoryId: number): string => {
+    const count = data?.locations?.filter((l) => l.category.id === categoryId).length || 0;
 
-      return count.toString();
-    },
-    [data]
-  );
+    return count.toString();
+  };
 
   return (
     <div className='grid flex-gap'>

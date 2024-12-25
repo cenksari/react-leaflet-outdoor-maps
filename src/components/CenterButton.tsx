@@ -1,5 +1,3 @@
-import { useCallback } from 'react';
-
 import type { Map, LatLngExpression } from 'leaflet';
 
 // interfaces
@@ -10,9 +8,9 @@ interface IProps {
 }
 
 const CenterButton: React.FC<IProps> = ({ map, zoomLevel, centerCoords }) => {
-  const onClick = useCallback((): void => {
+  const onClick = (): void => {
     map?.setView(centerCoords, zoomLevel);
-  }, [map, zoomLevel, centerCoords]);
+  };
 
   return (
     <div className='center-button flex flex-v-center flex-h-center'>
