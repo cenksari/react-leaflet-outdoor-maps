@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 
 import type { Map } from 'leaflet';
 
-import { useQuery } from '@tanstack/react-query';
 import { MapContainer, TileLayer, Circle } from 'react-leaflet';
 
 // hooks
@@ -32,20 +31,10 @@ import { getResponse } from '../utils/Request';
 const HomePage: React.FC = () => {
   const { theme, changeTheme } = useTheme();
 
+  const [data, setData] = useState<IData | null>(null);
   const [mapRef, setMapRef] = useState<Map | null>(null);
+  const [loading, setLoading] = useState<boolean>(true);
   const [myLocation, setMyLocation] = useState<IPosition | null>(null);
-
-  const { data, error, isError, isLoading } = useQuery({
-    queryKey: ['data'],
-    queryFn: async () => {
-      const response = await getResponse({ url: 'data.json', method: 'GET' });
-
-      if (response.status === 200) return response.data as IData;
-
-      throw new Error(response.data.title);
-    },
-    refetchOnWindowFocus: false,
-  });
 
   /**
    * Prevents the default behavior of the mouse event.
@@ -103,6 +92,14 @@ const HomePage: React.FC = () => {
 
   useEffect(() => {
     const runAsync = async () => {
+      const response = await getResponse({ url: 'data.json', method: 'GET' });
+
+      if (response.status === 200) {
+        setData(response.data as IData);
+
+        setLoading(false);
+      }
+
       const geoPermissions = await Geo.checkPermission();
 
       if (geoPermissions) subscribeLocation();
@@ -126,14 +123,10 @@ const HomePage: React.FC = () => {
     document.location.reload();
   };
 
-  if (isLoading) return <Loading />;
+  if (loading) return <Loading />;
 
-  if (isError || !data) {
-    return (
-      <ErrorPage
-        message={`No map data found! Please check your configuration settings. ${error}`}
-      />
-    );
+  if (!data) {
+    return <ErrorPage message='No map data found! Please check your configuration settings.' />;
   }
 
   return (

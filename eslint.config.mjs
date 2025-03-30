@@ -3,7 +3,6 @@ import importPlugin from 'eslint-plugin-import';
 import jsxA11yPlugin from 'eslint-plugin-jsx-a11y';
 import hooksPlugin from 'eslint-plugin-react-hooks';
 import prettierPlugin from 'eslint-plugin-prettier';
-import pluginQuery from '@tanstack/eslint-plugin-query';
 import typescriptParser from '@typescript-eslint/parser';
 import typescriptPlugin from '@typescript-eslint/eslint-plugin';
 
@@ -29,11 +28,9 @@ export default [
       prettier: prettierPlugin,
       'jsx-a11y': jsxA11yPlugin,
       'react-hooks': hooksPlugin,
-      '@tanstack/query': pluginQuery,
       '@typescript-eslint': typescriptPlugin,
     },
     rules: {
-      ...pluginQuery.configs.recommended.rules,
       ...hooksPlugin.configs.recommended.rules,
       ...jsxA11yPlugin.configs.recommended.rules,
       'no-console': 'warn',
@@ -41,11 +38,8 @@ export default [
       'prettier/prettier': 'error',
       'react/react-in-jsx-scope': 'off',
       'react/require-default-props': 'off',
-      '@tanstack/query/exhaustive-deps': 'error',
       '@typescript-eslint/no-explicit-any': 'off',
       'no-unused-vars': ['error', { args: 'none' }],
-      '@tanstack/query/stable-query-client': 'error',
-      '@tanstack/query/no-rest-destructuring': 'warn',
       'react/function-component-definition': [2, { namedComponents: 'arrow-function' }],
     },
   },
